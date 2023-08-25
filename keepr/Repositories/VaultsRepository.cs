@@ -17,7 +17,7 @@ public class VaultsRepository
     internal int CreateVault(Vault vaultData)
     {
     string sql = @"
-    INSERT INTO vaults(name, creatorId, description, img, isPirvate)
+    INSERT INTO vaults(name, description, creatorId, img, isPrivate)
     VALUES(@Name, @Description, @CreatorId, @Img, @IsPrivate);
     SELECT LAST_INSERT_ID()
     ;";
