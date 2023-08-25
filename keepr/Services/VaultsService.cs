@@ -51,4 +51,14 @@ public class VaultsService
     _vaultsRepository.UpdateVault(ogVault);
     return ogVault;
     }
+
+    internal void RemoveVault(int vaultId, string id)
+    {
+    Vault vault = GetVaultById(vaultId);
+    if (vault.CreatorId != id)
+    {
+      throw new Exception($"You are not the creator of {vault.Name}! You cannot delete it!");
+    }
+    _vaultsRepository.RemoveVault(vaultId);
+    }
 }
