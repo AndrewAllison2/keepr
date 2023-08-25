@@ -47,4 +47,19 @@ public class VaultsRepository
     ).FirstOrDefault();
     return vault;
     }
+
+    internal void UpdateVault(Vault ogVault)
+    {
+    string sql = @"
+    UPDATE vaults
+    SET
+    name = @Name,
+    description = @Description,
+    img = @Img,
+    isPrivate = @IsPrivate
+    WHERE id = @Id
+    ;";
+
+    _db.Execute(sql, ogVault);
+    }
 }

@@ -35,4 +35,20 @@ public class VaultsService
     }
     return vault;
     }
+
+    internal Vault UpdateVault(Vault vaultData, string userId)
+    {
+    Vault ogVault = GetVaultById(vaultData.Id, userId);
+  if (ogVault.CreatorId != userId)
+  {
+      throw new Exception($"{ogVault.Name} is not your Vault! You cannot edit it!");
+  }
+    ogVault.Name = vaultData.Name ?? ogVault.Name;
+    ogVault.Description = vaultData.Description ?? ogVault.Description;
+    ogVault.Img = vaultData.Img ?? ogVault.Img;
+    ogVault.IsPrivate = vaultData.IsPrivate ?? ogVault.IsPrivate;
+
+    _vaultsRepository.UpdateVault(ogVault);
+    return ogVault;
+    }
 }
