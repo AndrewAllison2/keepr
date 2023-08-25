@@ -7,11 +7,13 @@ namespace keepr.Services;
 
 public class KeepsService
 {
+  private readonly VaultsService _vaultsService;
   private readonly KeepsRepository _keepsRepository;
 
-    public KeepsService(KeepsRepository keepsRepository)
+    public KeepsService(KeepsRepository keepsRepository, VaultsService vaultsService)
     {
         _keepsRepository = keepsRepository;
+        _vaultsService = vaultsService;
     }
 
     internal Keep CreateKeep(Keep keepData)
@@ -60,5 +62,12 @@ public class KeepsService
       throw new Exception($"You are not the creator of {keep.Name}! You cannot delete it!");
     }
     _keepsRepository.RemoveKeep(keepId);
+    }
+
+    internal List<Keep> GetKeepsByVaultId(int vaultId, string userId)
+    {
+        _vaultsService.GetVaultById(vaultId, userId)
+        List<Keep> keeps = _keepsRepository.GetKeepsByVaultId(vaultId);
+    return keeps;
     }
 }
