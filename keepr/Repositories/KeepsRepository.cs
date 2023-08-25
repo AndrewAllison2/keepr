@@ -17,13 +17,36 @@ public class KeepsRepository
     internal int CreateKeep(Keep keepData)
     {
     string sql = @"
-    INSERT INTO keeps(name, description, img)
-    VALUES(@Name, @Description, @Img);
+    INSERT INTO keeps(name, description, img, creatorId)
+    VALUES(@Name, @Description, @Img, @CreatorId);
     SELECT LAST_INSERT_ID()
     ;";
 
     int keepId = _db.ExecuteScalar<int>(sql, keepData);
     return keepId;
+    }
+
+        internal List<Keep> GetKeeps()
+    {
+    string sql = @"
+    SELECT
+    k.*,
+    acc.*
+    FROM keeps k
+    JOIN accounts acc ON acc.id = k.creatorId
+    ORDER BY k.createdAt ASC
+    ;";
+
+    List<Keep> keeps = _db.Query<Keep, Profile, Keep>(
+      sql,
+      (keep, profile) =>
+      {
+        keep.Creator = profile;
+        return keep;
+      }
+    ).ToList();
+
+    return keeps;
     }
 
     internal Keep GetKeepById(int keepId)
@@ -45,7 +68,9 @@ public class KeepsRepository
         return keep;
       }, new { keepId }
     ).FirstOrDefault();
-    
+
     return keep;
     }
+
+
 }

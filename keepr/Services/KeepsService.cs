@@ -20,7 +20,12 @@ public class KeepsService
 
     Keep keep = GetKeepById(keepId);
     return keep;
+    }
 
+        internal List<Keep> GetKeeps()
+    {
+    List<Keep> keeps = _keepsRepository.GetKeeps();
+    return keeps;
     }
 
     internal Keep GetKeepById(int keepId)
@@ -33,4 +38,6 @@ public class KeepsService
     }
     return keep;
     }
+
+
 }
