@@ -13,4 +13,38 @@ public class VaultsRepository
     {
         _db = db;
     }
+
+    internal int CreateVault(Vault vaultData)
+    {
+    string sql = @"
+    INSERT INTO vaults(name, creatorId, description, img, isPirvate)
+    VALUES(@Name, @Description, @CreatorId, @Img, @IsPrivate);
+    SELECT LAST_INSERT_ID()
+    ;";
+
+    int vaultId = _db.ExecuteScalar<int>(sql, vaultData);
+    return vaultId;
+    }
+
+    internal Vault GetVaultById(int vaultId)
+    {
+    string sql = @"
+    SELECT
+    vau.*,
+    acc.*
+    FROM vaults vau
+    JOIN accounts acc ON acc.id = vau.creatorId
+    WHERE vau.id = @vaultId
+    ;";
+
+    Vault vault = _db.Query<Vault, Profile, Vault>(
+      sql,
+      (vault, profile) =>
+      {
+        vault.Creator = profile;
+        return vault;
+      }, new { vaultId }
+    ).FirstOrDefault();
+    return vault;
+    }
 }
