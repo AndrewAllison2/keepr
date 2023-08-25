@@ -72,5 +72,19 @@ public class KeepsRepository
     return keep;
     }
 
+    internal void UpdateKeep(Keep originalKeep)
+    {
+    string sql = @"
+    UPDATE keeps
+    SET
+    name = @NAme,
+    description = @Description,
+    img = @Img
+    WHERE id = @Id
+    LIMIT 1;
+    SELECT * FROM keeps WHERE id = @Id
+    ;";
 
+    _db.Execute(sql, originalKeep);
+    }
 }

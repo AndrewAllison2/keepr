@@ -39,5 +39,15 @@ public class KeepsService
     return keep;
     }
 
+    internal Keep UpdateKeep(int keepId, Keep keepData)
+    {
+    Keep originalKeep = GetKeepById(keepId);
 
+    originalKeep.Name = keepData.Name ?? originalKeep.Name;
+    originalKeep.Description = keepData.Description ?? originalKeep.Description;
+    originalKeep.Img = keepData.Img ?? originalKeep.Img;
+
+    _keepsRepository.UpdateKeep(originalKeep);
+    return originalKeep;
+    }
 }
