@@ -13,4 +13,24 @@ public class KeepsService
     {
         _keepsRepository = keepsRepository;
     }
+
+    internal Keep CreateKeep(Keep keepData)
+    {
+    int keepId = _keepsRepository.CreateKeep(keepData);
+
+    Keep keep = GetKeepById(keepId);
+    return keep;
+
+    }
+
+    internal Keep GetKeepById(int keepId)
+    {
+    Keep keep = _keepsRepository.GetKeepById(keepId);
+
+    if (keep == null)
+    {
+      throw new Exception($"No Keep by the ID of {keepId}");
+    }
+    return keep;
+    }
 }
