@@ -50,4 +50,15 @@ public class KeepsService
     _keepsRepository.UpdateKeep(originalKeep);
     return originalKeep;
     }
+
+    internal void RemoveKeep(int keepId, string id)
+    {
+    Keep keep = GetKeepById(keepId);
+
+    if (keep.CreatorId != id)
+    {
+      throw new Exception($"You are not the creator of {keep.Name}! You cannot delete it!");
+    }
+    _keepsRepository.RemoveKeep(keepId);
+    }
 }

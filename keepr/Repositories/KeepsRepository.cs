@@ -87,4 +87,11 @@ public class KeepsRepository
 
     _db.Execute(sql, originalKeep);
     }
+
+    internal void RemoveKeep(int keepId)
+    {
+    string sql = @"DELETE FROM keeps WHERE id = @keepId LIMIT 1;";
+
+    _db.Execute(sql, new { keepId });
+    }
 }
