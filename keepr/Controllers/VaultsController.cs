@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 
 namespace keepr.Controllers;
 
@@ -17,5 +12,22 @@ public class VaultsController : ControllerBase
     {
         _vaultsService = vaultsService;
         _auth0 = auth0;
+    }
+
+    [Authorize]
+    [HttpPost]
+    public async Task<ActionResult<Vault>> CreateVault([FromBody] Vault vaultData)
+    {
+      try 
+      {
+      Account userInfo = await _auth0.GetUserInfoAsync<Account>(HttpContext);
+      vaultData.CreatorId = userInfo.Id;
+      Vault vault = _vaultsService.CreateVault(vaultData);
+      return Ok(vault);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
     }
 }
