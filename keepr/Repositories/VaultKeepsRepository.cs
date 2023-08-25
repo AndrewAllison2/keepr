@@ -29,9 +29,7 @@ public class VaultKeepsRepository
 
     internal VaultKeep GetVaultKeepById(int vaultKeepId)
     {
-    string sql = @"
-    SELECT * FROM vaultKeeps WHERE id = @vaultKeepId
-    ;";
+    string sql = @"SELECT * FROM vaultKeeps WHERE id = @vaultKeepId;";
 
     VaultKeep vaultkeep = _db.QueryFirstOrDefault<VaultKeep>(sql, new { vaultKeepId });
     return vaultkeep;
@@ -39,7 +37,7 @@ public class VaultKeepsRepository
 
     internal void RemoveVaultKeep(int vaultKeepId)
     {
-    string sql = @"DELETE * FROM vaultKeeps WHERE id = @Id LIMIT 1;";
+    string sql = @"DELETE FROM vaultKeeps WHERE id = @vaultKeepId LIMIT 1;";
 
     _db.Execute(sql, new { vaultKeepId });
     }
