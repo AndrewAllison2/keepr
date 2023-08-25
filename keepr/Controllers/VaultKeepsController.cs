@@ -37,13 +37,15 @@ public class VaultKeepsController : ControllerBase
     }
 
     [Authorize]
-    [HttpDelete]
+    [HttpDelete("{vaultKeepId}")]
     public async Task<ActionResult<string>> RemoveVaultKeep(int vaultKeepId)
     {
       try 
       {
       Account userInfo = await _auth0.GetUserInfoAsync<Account>(HttpContext);
-      
+      _vaultKeepsService.RemoveVaultKeep(vaultKeepId, userInfo?.Id);
+      return Ok("Keep was removed from yourVault!");
+
       }
       catch (Exception e)
       {

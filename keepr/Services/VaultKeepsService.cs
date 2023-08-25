@@ -19,4 +19,23 @@ public class VaultKeepsService
     VaultKeep vaultkeep = _vaultKeepsRepository.CreateVaultKeep(data);
     return vaultkeep;
     }
+
+    internal VaultKeep GetVaultKeepById(int vaultKeepId)
+    {
+    VaultKeep vaultKeep = _vaultKeepsRepository.GetVaultKeepById(vaultKeepId);
+  if(vaultKeep == null){
+      throw new Exception("No Keep in a Vault with that ID");
+  }
+    return vaultKeep;
+    }
+
+    internal void RemoveVaultKeep(int vaultKeepId, string id)
+    {
+    VaultKeep vaultkeep = GetVaultKeepById(vaultKeepId);
+    if (vaultkeep.CreatorId != id)
+    {
+      throw new Exception($"You cannot delete thatbecause it doesn't belong to you!");
+    }
+    _vaultKeepsRepository.RemoveVaultKeep(vaultKeepId);
+    }
 }
