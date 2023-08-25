@@ -14,3 +14,8 @@ public class Keep : RepoItem<int>
     public int Views { get; set; }
     public Profile Creator { get; set; }
 }
+
+public class VaultedKeep : Keep
+{
+    public int vaultKeepId { get; set; }
+}

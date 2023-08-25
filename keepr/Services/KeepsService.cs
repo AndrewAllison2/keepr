@@ -64,10 +64,10 @@ public class KeepsService
     _keepsRepository.RemoveKeep(keepId);
     }
 
-    internal List<Keep> GetKeepsByVaultId(int vaultId, string userId)
+    internal List<VaultedKeep> GetKeepsByVaultId(int vaultId, string userId)
     {
-        _vaultsService.GetVaultById(vaultId, userId)
-        List<Keep> keeps = _keepsRepository.GetKeepsByVaultId(vaultId);
+    _vaultsService.GetVaultById(vaultId, userId);
+        List<VaultedKeep> keeps = _keepsRepository.GetKeepsByVaultId(vaultId);
     return keeps;
     }
 }
