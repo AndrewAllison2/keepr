@@ -55,7 +55,8 @@ public class VaultsController : ControllerBase
       try 
       {
       Account userInfo = await _auth0.GetUserInfoAsync<Account>(HttpContext);
-      Vault vault = _vaultsService.UpdateVault(vaultData, userInfo.Id);
+      vaultData.Id = vaultId;
+      Vault vault = _vaultsService.UpdateVault(vaultData, userInfo?.Id);
       return Ok(vault);
       }
       catch (Exception e)
