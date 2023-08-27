@@ -6,12 +6,16 @@
     <router-view />
   </main>
 
+
+  <ModalComponent/>
+
 </template>
 
 <script>
 import { computed } from 'vue'
 import { AppState } from './AppState'
 import Navbar from './components/Navbar.vue'
+import ModalComponent from "./components/ModalComponent.vue"
 
 export default {
   setup() {
@@ -19,7 +23,7 @@ export default {
       appState: computed(() => AppState)
     }
   },
-  components: { Navbar }
+  components: { Navbar, ModalComponent }
 }
 </script>
 <style lang="scss">

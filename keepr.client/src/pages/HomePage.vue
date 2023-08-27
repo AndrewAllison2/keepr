@@ -1,11 +1,13 @@
 <template>
-  <div class="masonry-with-columns mt-3">
+  <section class="masonry-with-columns mt-3">
     
       
-        <div v-for="k in keeps" :key="k.id">
-          <img class="img-fluid keep-img " :src="k.img" :alt="k.name">
+        <div v-for="keep in keeps" :key="keep.id">
+          
+            <KeepComponent :keepProp="keep" />
+          
         </div>
-      </div>
+</section>
     
   
 </template>
@@ -15,30 +17,26 @@ import Pop from "../utils/Pop.js";
 import {keepsService} from '../services/KeepsService.js'
 import { computed, onMounted } from "vue";
 import { AppState } from "../AppState.js";
+import KeepComponent from "../components/KeepComponent.vue";
 
 export default {
-  setup() {
-
-    async function getKeeps() {
-      try 
-      {
-        await keepsService.getKeeps()
-      }
-      catch (error)
-      {
-        return Pop.error(error.message)
-      }
-    }
-
-    onMounted(() => {
-      getKeeps()
-    })
-
-    return {
-
-      keeps: computed(()=> AppState.keeps)
-    }
-  }
+    setup() {
+        async function getKeeps() {
+            try {
+                await keepsService.getKeeps();
+            }
+            catch (error) {
+                return Pop.error(error.message);
+            }
+        }
+        onMounted(() => {
+            getKeeps();
+        });
+        return {
+            keeps: computed(() => AppState.keeps)
+        };
+    },
+    components: { KeepComponent }
 }
 </script>
 
@@ -61,9 +59,6 @@ export default {
       } 
 }
 
-.keep-img{
-border-radius: 3%;
-object-fit: contain;
-}
+
 
 </style>
