@@ -31,4 +31,18 @@ public class ProfilesController : ControllerBase
         return BadRequest(e.Message);
       }
     }
+
+    [HttpGet("{profileId}/keeps")]
+    public ActionResult<List<Keep>> GetUserKeepsByProfileId(string profileId)
+    {
+      try 
+      {
+      List<Keep> keeps = _profilesService.GetUserKeepsByProfileId(profileId);
+      return Ok(keeps);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
 }

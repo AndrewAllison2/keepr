@@ -23,4 +23,9 @@ public class ProfilesRepository
     Profile profile = _db.QueryFirstOrDefault<Profile>(sql, new { profileId });
     return profile;
     }
+
+    internal List<Keep> GetUserKeepsByProfileId(string profileId)
+    {
+    
+    }
 }
