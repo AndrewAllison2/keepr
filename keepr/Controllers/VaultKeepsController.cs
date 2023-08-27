@@ -44,7 +44,7 @@ public class VaultKeepsController : ControllerBase
       {
       Account userInfo = await _auth0.GetUserInfoAsync<Account>(HttpContext);
       _vaultKeepsService.RemoveVaultKeep(vaultKeepId, userInfo?.Id);
-      return Ok("Keep was removed from yourVault!");
+      return Ok("Keep was removed from your Vault!");
 
       }
       catch (Exception e)
