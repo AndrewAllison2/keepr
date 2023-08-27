@@ -30,9 +30,8 @@ export default {
 }
 
 
-footer {
-  display: grid;
-  place-content: center;
-  height: 32px;
+body {
+  margin: 0;
+  padding: 1rem;
 }
 </style>
