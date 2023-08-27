@@ -1,7 +1,11 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <h1>Keepr</h1>
+      <div class="col-12">
+        <div v-for="k in keeps" :key="k.id">
+          <h4>{{ k.name }}</h4>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -9,7 +13,8 @@
 <script>
 import Pop from "../utils/Pop.js";
 import {keepsService} from '../services/KeepsService.js'
-import { onMounted } from "vue";
+import { computed, onMounted } from "vue";
+import { AppState } from "../AppState.js";
 
 export default {
   setup() {
@@ -29,7 +34,10 @@ export default {
       getKeeps()
     })
 
-    return {}
+    return {
+
+      keeps: computed(()=> AppState.keeps)
+    }
   }
 }
 </script>
