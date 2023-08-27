@@ -1,13 +1,13 @@
 <template>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
+  <div class="masonry-with-columns mt-3">
+    
+      
         <div v-for="k in keeps" :key="k.id">
-          <h4>{{ k.name }}</h4>
+          <img class="img-fluid keep-img " :src="k.img" :alt="k.name">
         </div>
       </div>
-    </div>
-  </div>
+    
+  
 </template>
 
 <script>
@@ -43,23 +43,27 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.home {
-  display: grid;
-  height: 80vh;
-  place-content: center;
-  text-align: center;
-  user-select: none;
 
-  .home-card {
-    width: 50vw;
 
-    >img {
-      height: 200px;
-      max-width: 200px;
-      width: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-  }
+.masonry-with-columns {
+  columns: 6 200px;
+  column-gap: 1rem;
+
+    div {
+        width: 150px;
+        background: white;
+        color: white;
+        margin: 0 1rem 1rem 0;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        border-radius: 3%;
+      } 
 }
+
+.keep-img{
+border-radius: 3%;
+object-fit: contain;
+}
+
 </style>
