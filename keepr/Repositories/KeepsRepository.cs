@@ -31,11 +31,12 @@ public class KeepsRepository
     string sql = @"
     SELECT
     k.*,
-    COUNT (vk.id) AS Kept,
+    COUNT(vk.id) AS kept,
     acc.*
     FROM keeps k
     LEFT JOIN vaultKeeps vk ON vk.keepId = k.id
     JOIN accounts acc ON acc.id = k.creatorId
+    GROUP BY k.id
     ORDER BY k.createdAt ASC
     ;";
 
