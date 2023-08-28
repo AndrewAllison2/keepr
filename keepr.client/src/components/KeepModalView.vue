@@ -29,8 +29,20 @@
 
 
           <div class="col-12 d-flex justify-content-around align-items-center">
+
+          <div class="btn-group">
+            <button type="button" class="btn save-btn">save</button>
+            <button type="button" class="btn drop-down dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li v-for="vault in myVaults" :key="vault.id" class="dropdown-item">{{vault?.name}}</li>
+              
+            </ul>
+          </div>
+
             <div>
-              <button class="btn save-btn fs-5 me-5" @click="createVaultKeep()">save</button>
+              <!-- <button class="btn save-btn fs-5 me-5" @click="createVaultKeep(this.keep?.id)">save</button> -->
             </div>
             <div v-if="keep" class="d-flex align-items-center">
               <router-link :to="{name: 'Profile', params: {profileId: keep?.creatorId}}">
@@ -61,9 +73,10 @@ export default {
     
     return {
       keep: computed(() => AppState.activeKeep),
+      myVaults: computed(()=> AppState.myVaults),
 
 
-      async createVaultKeep() {
+      async createVaultKeep(keepId) {
         try 
         {
           logger.log('You gotta write the function bud.....')
@@ -102,5 +115,11 @@ export default {
   height: 10vh;
   width: 10vh;
   border-radius: 50%;
+}
+
+.drop-down{
+  background-color: #A277D940;
+  color: black;
+  text-shadow: 1px 1px white;
 }
 </style>

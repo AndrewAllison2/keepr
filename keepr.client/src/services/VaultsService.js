@@ -24,6 +24,11 @@ class VaultsService {
     AppState.vaults.splice(vIndex, 1)
   }
 
+  setActiveVault(vaultId) {
+    const vault = AppState.vaults.find(v => v.id == vaultId)
+    AppState.activeVault = vault
+  }
+
 }
 
 
