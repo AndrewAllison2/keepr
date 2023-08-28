@@ -53,6 +53,11 @@ public class KeepsService
     {
     Keep originalKeep = GetKeepById(keepId);
 
+    if (originalKeep.CreatorId != keepData.CreatorId)
+    {
+      throw new Exception("You cannot edit a Keep you did not create!");
+    }
+
     originalKeep.Name = keepData.Name ?? originalKeep.Name;
     originalKeep.Description = keepData.Description ?? originalKeep.Description;
     originalKeep.Img = keepData.Img ?? originalKeep.Img;

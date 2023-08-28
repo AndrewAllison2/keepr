@@ -61,4 +61,11 @@ public class VaultsService
     }
     _vaultsRepository.RemoveVault(vaultId);
     }
+
+    internal List<Vault> GetMyVaults(string userId)
+    {
+    List<Vault> vaults = _vaultsRepository.GetMyVaults(userId);
+
+    return vaults;
+    }
 }

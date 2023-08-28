@@ -33,6 +33,7 @@ public class ProfilesService
     internal List<Vault> GetUserVaultsByProfileId(string profileId, string userId)
     {
     List<Vault> vaults = _profilesRepository.GetUserVaultsByProfileId(profileId);
+    vaults = vaults.FindAll(v => v.IsPrivate == false || v.CreatorId == userId);
     return vaults;
     }
 }

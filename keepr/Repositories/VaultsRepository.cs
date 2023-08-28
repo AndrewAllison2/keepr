@@ -70,4 +70,12 @@ public class VaultsRepository
 
     _db.Execute(sql, new { vaultId });
     }
+
+    internal List<Vault> GetMyVaults(string userId)
+    {
+    string sql = @"SELECT * FROM vaults WHERE creatorId = @UserId;";
+
+    List<Vault> vaults = _db.Query<Vault>(sql, new { userId }).ToList();
+    return vaults;
+    }
 }
