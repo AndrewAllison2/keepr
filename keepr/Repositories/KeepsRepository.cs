@@ -85,8 +85,7 @@ public class KeepsRepository
     img = @Img,
     views = @Views
     WHERE id = @Id
-    LIMIT 1;
-    SELECT * FROM keeps WHERE id = @Id
+    LIMIT 1
     ;";
 
     _db.Execute(sql, originalKeep);

@@ -44,7 +44,7 @@ public class KeepsService
   internal Keep GetKeepByIdAndUpdateVisits(int keepId, string userId = null)
   {
     Keep keep = GetKeepById(keepId, userId);
-    keep.Views++;
+    keep.Views ++;
     _keepsRepository.UpdateKeep(keep);
     return keep;
   }

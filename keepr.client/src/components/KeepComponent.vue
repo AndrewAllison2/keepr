@@ -10,7 +10,7 @@
   </div>
 
       <div v-if="keepProp.creatorId == account.id" class="delete-button">
-      <i class="mdi mdi-close-circle text-danger selectable" title="Remove this keep" @click="removeKeep(this.keepProp)"></i>
+      <i class="mdi mdi-close-circle text-danger selectable fs-5" title="Remove this keep" @click="removeKeep(this.keepProp)"></i>
     </div>
 
 
