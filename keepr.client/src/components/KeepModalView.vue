@@ -23,7 +23,7 @@
           </div>
         </div>
 
-        <div class="row justify-content-center mt-5 pt-5">
+        <div class="row mt-5 pt-5">
 
           <!-- NOTE THIS IS FOR THE Vaults LATER -->
           <!-- <div>
@@ -37,7 +37,16 @@
             </div>
           </div> -->
 
-          <button class="btn save-btn fs-5" @click="createVaultKeep()">save</button>
+          <div class="col-12 d-flex justify-content-around align-items-center">
+            <div>
+              <button class="btn save-btn fs-5 me-5" @click="createVaultKeep()">save</button>
+            </div>
+            <div class="d-flex align-items-center">
+              <img class="img-fluid avatar me-2" :src="keep?.creator?.picture" :alt="keep?.creator?.name" title="View Profile">
+              <p class="h5">{{ keep?.creator?.name }}</p>
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -94,5 +103,11 @@ export default {
   color: black;
   width: 5em;
   text-shadow: 1px 1px white;
+}
+
+.avatar {
+  height: 10vh;
+  width: 10vh;
+  border-radius: 50%;
 }
 </style>
