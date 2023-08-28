@@ -14,6 +14,11 @@
     <template #body>Keep Form</template>
   </FormsModal>
 
+  <FormsModal id="createVaultModal">
+    <template #header>Create New Vault</template>
+    <template #body>Vault Form</template>
+  </FormsModal>
+
 </template>
 
 <script>
