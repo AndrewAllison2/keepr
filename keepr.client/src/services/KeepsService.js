@@ -12,6 +12,10 @@ class KeepsService {
     AppState.keeps = res.data.map(k => new Keep(k))
   }
 
+  setActiveKeep(keep) {
+    AppState.activeKeep = keep
+  }
+
 }
 
 

@@ -1,7 +1,7 @@
 <template>
 
   
-        <img class="img-fluid keep-img selectable" data-bs-toggle="modal" data-bs-target="#exampleModal" :src="keepProp.img" :alt="keepProp.name">
+        <img class="img-fluid keep-img selectable" data-bs-toggle="modal" data-bs-target="#keepModal" @click="setActiveKeep(this.keepProp)" :src="keepProp.img" :alt="keepProp.name">
 
 
 
@@ -11,16 +11,24 @@
 
 <script>
 import { Keep } from "../models/Keep.js";
+import { keepsService } from "../services/KeepsService.js";
 
 export default {
   props: {
     keepProp: {type: Keep, required: true}
   },
 
-  setup(){
+  setup(props){
     return {
-      
+
+
+      setActiveKeep() {
+        keepsService.setActiveKeep(props.keepProp)
+      }
+
+
     }
+    
   }
 }
 </script>
