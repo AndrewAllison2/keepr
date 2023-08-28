@@ -89,6 +89,8 @@ export default {
           getProfileVaults();
             getProfileKeeps()
         });
+
+
         return {
             profile: computed(() => AppState.activeProfile),
           vaults: computed(() => AppState.vaults),
