@@ -1,13 +1,13 @@
 <template>
   
   <div class="cards">
-    <img class="img-fluid keep-img selectable" data-bs-toggle="modal" data-bs-target="#keepModal" @click="setActiveKeep(this.keepProp)" :src="keepProp.img" :alt="keepProp.name">
+    <img class="img-fluid keep-img selectable" title="View this keep" data-bs-toggle="modal" data-bs-target="#keepModal" @click="setActiveKeep(this.keepProp)" :src="keepProp.img" :alt="keepProp.name">
     
   </div>
   
   <div class="keep-info d-flex justify-content-around align-items-center">
     <h5>{{ keepProp?.name }}</h5>
-    <img class="img-fluid avatar" :src="keepProp?.creator?.picture" :alt="keepProp?.creator?.name">
+    <img class="img-fluid avatar" :src="keepProp?.creator?.picture" :alt="keepProp?.creator?.name" :title="keepProp?.creator?.name">
   </div>
 
 
