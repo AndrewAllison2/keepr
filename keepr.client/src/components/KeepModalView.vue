@@ -2,11 +2,28 @@
   <div class="container-fluid">
     <div class="row">
 
-      <div class="col-12 col-md-6">
-        <img class="img-fluid" :src="keep?.img" :alt="keep?.name">
+      <div class="col-12 col-md-6 p-0">
+        <img class="img-fluid rounded keep-img" :src="keep?.img" :alt="keep?.name">
       </div>
 
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-6 keep-info p-3">
+
+        <div class="d-flex justify-content-center">
+          <i class="mdi mdi-eye me-2" title="Views"></i>
+          <h1 class="fs-5 me-4">{{ keep?.views }}</h1>
+          <i class="mdi mdi-file me-2" title="Kept"></i>
+          <h1 class="fs-5">{{ keep?.kept }}</h1>
+        </div>
+
+        <div class="row mt-5 pt-5 text-center">
+          <h1 class="fw-1">{{ keep?.name }}</h1>
+
+          <div class="col-10 m-auto mt-3">
+            <p>{{ keep?.description }}</p>
+          </div>
+        </div>
+
+        <div class="row "></div>
 
       </div>
     </div>
@@ -32,5 +49,13 @@ export default {
 
 
 <style lang="scss" scoped>
+.keep-img {
+  height: 80vh;
+  width: 70vw;
+  object-fit: cover;
+}
 
+.keep-info {
+
+}
 </style>
