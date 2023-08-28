@@ -15,7 +15,7 @@
 <script>
 import Pop from "../utils/Pop.js";
 import {keepsService} from '../services/KeepsService.js'
-import { computed, onMounted } from "vue";
+import { computed, onMounted, watch, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
 import KeepComponent from "../components/KeepComponent.vue";
 import { accountService } from "../services/AccountService.js";
@@ -45,11 +45,13 @@ export default {
 
         onMounted(() => {
             getKeeps();
+        });
 
-            if (AppState.account.id) {
+        watchEffect(() => {
+                        if (AppState.account.id) {
                 getMyVaults()
             }
-        });
+        })
         
         return {
             keeps: computed(() => AppState.keeps)
