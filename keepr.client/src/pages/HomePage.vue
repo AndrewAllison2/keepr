@@ -18,6 +18,7 @@ import {keepsService} from '../services/KeepsService.js'
 import { computed, onMounted } from "vue";
 import { AppState } from "../AppState.js";
 import KeepComponent from "../components/KeepComponent.vue";
+import { accountService } from "../services/AccountService.js";
 
 export default {
     setup() {
@@ -29,8 +30,25 @@ export default {
                 return Pop.error(error.message);
             }
         }
+
+        async function getMyVaults() {
+            try 
+            {
+                await accountService.getMyVaults()
+            }
+            catch (error)
+            {
+              return Pop.error(error.message)
+            }
+        }
+
+
         onMounted(() => {
             getKeeps();
+
+            if (AppState.account.id) {
+                getMyVaults()
+            }
         });
         
         return {
