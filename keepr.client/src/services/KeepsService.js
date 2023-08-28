@@ -22,6 +22,11 @@ class KeepsService {
     AppState.profileKeeps = res.data.map(k => new Keep(k))
   }
 
+  async createKeep(formData) {
+    const res = await api.post('api/keeps', formData)
+    logger.log('Creating keep', res.data)
+  }
+
 }
 
 

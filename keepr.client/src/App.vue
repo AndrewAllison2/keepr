@@ -10,8 +10,8 @@
   <ModalComponent/>
 
   <FormsModal id="createKeepModal">
-    <template #header>Create New Keep</template>
-    <template #body>Keep Form</template>
+    <template #header>Add your Keep</template>
+    <template #body><CreateKeepForm/></template>
   </FormsModal>
 
   <FormsModal id="createVaultModal">
