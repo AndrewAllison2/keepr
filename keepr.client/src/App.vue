@@ -9,6 +9,11 @@
 
   <ModalComponent/>
 
+  <FormsModal id="createKeepModal">
+    <template #header>Create New Keep</template>
+    <template #body>Keep Form</template>
+  </FormsModal>
+
 </template>
 
 <script>
@@ -16,6 +21,7 @@ import { computed } from 'vue'
 import { AppState } from './AppState'
 import Navbar from './components/Navbar.vue'
 import ModalComponent from "./components/ModalComponent.vue"
+import FormsModal from "./components/FormsModal.vue"
 
 export default {
   setup() {
@@ -23,7 +29,7 @@ export default {
       appState: computed(() => AppState)
     }
   },
-  components: { Navbar, ModalComponent }
+  components: { Navbar, ModalComponent, FormsModal }
 }
 </script>
 <style lang="scss">

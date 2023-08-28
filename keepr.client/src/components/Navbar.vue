@@ -11,7 +11,7 @@
     CREATE
   </button>
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item text-white top-option" href="#">new keep</a></li>
+    <li><a class="dropdown-item text-white top-option" data-bs-toggle="modal" data-bs-target="#createKeepModal">new keep</a></li>
     <li><a class="dropdown-item text-white" href="#">new vault</a></li>
   </ul>
 </div>
