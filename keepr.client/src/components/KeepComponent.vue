@@ -89,6 +89,7 @@ div{
   position: relative;
   top: -9.7em;
   left: 6.5em;
+  margin-bottom: -2em;
 }
 
 .avatar{
