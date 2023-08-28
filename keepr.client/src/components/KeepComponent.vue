@@ -2,13 +2,16 @@
   
   <div class="cards">
     <img class="img-fluid keep-img selectable" title="View this keep" data-bs-toggle="modal" data-bs-target="#keepModal" @click="setActiveKeep(this.keepProp)" :src="keepProp.img" :alt="keepProp.name">
-    
   </div>
   
   <div class="keep-info d-flex justify-content-around align-items-center">
     <h5>{{ keepProp?.name }}</h5>
     <img class="img-fluid avatar" :src="keepProp?.creator?.picture" :alt="keepProp?.creator?.name" :title="keepProp?.creator?.name">
   </div>
+
+      <div v-if="keepProp.creatorId == account.id" class="delete-button">
+      <i class="mdi mdi-close-circle text-danger selectable" title="Remove this keep" @click="removeKeep(this.keepProp)"></i>
+    </div>
 
 
 
@@ -20,8 +23,11 @@
 
 
 <script>
+import { computed } from "vue";
 import { Keep } from "../models/Keep.js";
 import { keepsService } from "../services/KeepsService.js";
+import { AppState } from "../AppState.js";
+import Pop from "../utils/Pop.js";
 
 export default {
   props: {
@@ -30,10 +36,26 @@ export default {
 
   setup(props){
     return {
+      account: computed(()=> AppState.account),
 
 
       setActiveKeep() {
         keepsService.setActiveKeep(props.keepProp)
+      },
+
+      async removeKeep(keep) {
+        try 
+        {
+          if (!await Pop.confirm('Are you sure you want to remove this keep?')) {
+            return
+          }
+          const keepId = keep.id
+          await keepsService.removeKeep(keepId)
+        }
+        catch (error)
+        {
+          return Pop.error(error.message)
+        }
       }
 
 
@@ -61,6 +83,12 @@ div{
   left: -0em;
   margin-bottom: -3em;
   text-shadow: 2px 2px black;
+}
+
+.delete-button{
+  position: relative;
+  top: -9.7em;
+  left: 6.5em;
 }
 
 .avatar{
