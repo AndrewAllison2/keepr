@@ -21,7 +21,7 @@
       <h5>Do you want to make this Vault private?</h5>
       <p>Private Vaults can only be seen by you</p>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="checkIsPrivate" v-model="editable.isPrivate">
+        <input class="form-check-input" type="checkbox" value="false" id="checkIsPrivate" v-model="editable.isPrivate">
         <label class="form-check-label" for="checkIsPrivate">
           Private
         </label>

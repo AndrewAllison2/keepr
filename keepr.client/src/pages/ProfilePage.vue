@@ -48,7 +48,7 @@ import { useRoute } from "vue-router";
 import Pop from "../utils/Pop.js";
 import { profilesService } from '../services/ProfilesService.js'
 import { vaultsService } from '../services/VaultsService.js'
-import { computed, onMounted } from "vue";
+import { computed, onMounted, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
 import KeepComponent from "../components/KeepComponent.vue";
 import { keepsService } from "../services/KeepsService.js";
