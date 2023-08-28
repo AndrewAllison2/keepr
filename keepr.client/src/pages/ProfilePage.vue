@@ -21,7 +21,9 @@
     <div class="row">
       <h4>VAULTS</h4>
       <div v-for="v in vaults" :key="v.id" class="col-12 col-md-3">
-        <VaultCard :vaultProp="v"/>
+        <router-link :to="{name: 'Vault', params:{vaultId: v?.id}}">
+          <VaultCard :vaultProp="v"/>
+        </router-link>
       </div>
     </div>
 
