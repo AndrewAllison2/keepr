@@ -23,9 +23,9 @@
           </div>
         </div>
 
-        <div class="row ">
+        <div class="row justify-content-center mt-5 pt-5">
 
-          <!-- NOTE THIS IS FOR THE TAGS LATER -->
+          <!-- NOTE THIS IS FOR THE Vaults LATER -->
           <!-- <div>
             <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{ keep. }}</button>
@@ -37,7 +37,7 @@
             </div>
           </div> -->
 
-          <button class="btn save-btn">save</button>
+          <button class="btn save-btn fs-5" @click="createVaultKeep()">save</button>
         </div>
 
       </div>
@@ -50,13 +50,27 @@
 <script>
 import { computed } from "vue";
 import { AppState } from "../AppState.js";
+import Pop from "../utils/Pop.js";
+import { logger } from "../utils/Logger.js";
 
 export default {
   setup() {
 
     
     return {
-      keep: computed(()=> AppState.activeKeep)
+      keep: computed(() => AppState.activeKeep),
+
+
+      async createVaultKeep() {
+        try 
+        {
+          logger.log('You gotta write the function bud.....')
+        }
+        catch (error)
+        {
+          return Pop.error(error.message)
+        }
+      }
     }
   }
 }
@@ -68,13 +82,17 @@ export default {
   height: 80vh;
   width: 70vw;
   object-fit: cover;
+  object-position: center;
 }
 
-.keep-info {
+// .keep-info {
 
-}
+// }
 
 .save-btn {
-  
+  background-color: #A277D940;
+  color: black;
+  width: 5em;
+  text-shadow: 1px 1px white;
 }
 </style>
