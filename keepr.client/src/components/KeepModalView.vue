@@ -41,7 +41,7 @@
             <div>
               <button class="btn save-btn fs-5 me-5" @click="createVaultKeep()">save</button>
             </div>
-            <div class="d-flex align-items-center">
+            <div v-if="keep" class="d-flex align-items-center">
               <router-link :to="{name: 'Profile', params: {profileId: keep?.creatorId}}">
                 <img class="img-fluid avatar me-2" :src="keep?.creator?.picture" :alt="keep?.creator?.name" title="View Profile">
               </router-link>
