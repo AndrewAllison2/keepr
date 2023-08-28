@@ -39,8 +39,9 @@ export default {
       account: computed(()=> AppState.account),
 
 
-      setActiveKeep() {
-        keepsService.setActiveKeep(props.keepProp)
+      async setActiveKeep(keep) {
+        const keepId = keep.id
+        keepsService.setActiveKeep(keepId)
       },
 
       async removeKeep(keep) {
