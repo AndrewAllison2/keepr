@@ -91,7 +91,8 @@ export default {
         });
         return {
             profile: computed(() => AppState.activeProfile),
-            vaults: computed(() => AppState.vaults)
+          vaults: computed(() => AppState.vaults),
+            keeps: computed(()=> AppState.profileKeeps)
         };
     },
     components: { KeepComponent }
