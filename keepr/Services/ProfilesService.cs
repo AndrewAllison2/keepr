@@ -29,4 +29,10 @@ public class ProfilesService
     List<Keep> keeps = _profilesRepository.GetUserKeepsByProfileId(profileId);
     return keeps;
     }
+
+    internal List<Vault> GetUserVaultsByProfileId(string profileId, string userId)
+    {
+    List<Vault> vaults = _profilesRepository.GetUserVaultsByProfileId(profileId);
+    return vaults;
+    }
 }

@@ -31,5 +31,12 @@ public class ProfilesRepository
     List<Keep> keeps = _db.Query<Keep>(sql, new { profileId }).ToList();
     return keeps;
     }
-    
+
+    internal List<Vault> GetUserVaultsByProfileId(string profileId)
+    {
+    string sql = @"SELECT * FROM vaults WHERE creatorId = @ProfileId;";
+
+    List<Vault> vaults = _db.Query<Vault>(sql, new { profileId }).ToList();
+    return vaults;
+    }
 }
