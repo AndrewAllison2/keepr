@@ -62,18 +62,21 @@
 
 
 <script>
-import { computed } from "vue";
+import { computed, ref, } from "vue";
 import { AppState } from "../AppState.js";
 import Pop from "../utils/Pop.js";
 import { logger } from "../utils/Logger.js";
 
 export default {
   setup() {
+        const selectedVault = ref('')
 
     
     return {
       keep: computed(() => AppState.activeKeep),
-      myVaults: computed(()=> AppState.myVaults),
+      myVaults: computed(() => AppState.myVaults),
+      selectedVault,
+      
 
 
       async createVaultKeep(keepId) {

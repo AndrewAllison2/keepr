@@ -39,8 +39,11 @@ import { AppState } from "../AppState.js";
 import Login from './Login.vue';
 export default {
   setup() {
+
+
     return {
-      account: computed(()=> AppState.account)
+      account: computed(() => AppState.account),
+
     }
   },
   components: { Login }
