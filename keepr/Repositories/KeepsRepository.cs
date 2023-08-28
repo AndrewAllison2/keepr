@@ -80,9 +80,10 @@ public class KeepsRepository
     string sql = @"
     UPDATE keeps
     SET
-    name = @NAme,
+    name = @Name,
     description = @Description,
-    img = @Img
+    img = @Img,
+    views = @Views
     WHERE id = @Id
     LIMIT 1;
     SELECT * FROM keeps WHERE id = @Id
