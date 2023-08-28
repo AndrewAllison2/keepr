@@ -23,7 +23,22 @@
           </div>
         </div>
 
-        <div class="row "></div>
+        <div class="row ">
+
+          <!-- NOTE THIS IS FOR THE TAGS LATER -->
+          <!-- <div>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{ keep. }}</button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </div>
+          </div> -->
+
+          <button class="btn save-btn">save</button>
+        </div>
 
       </div>
     </div>
@@ -57,5 +72,9 @@ export default {
 
 .keep-info {
 
+}
+
+.save-btn {
+  
 }
 </style>
