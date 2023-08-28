@@ -34,7 +34,7 @@ public class VaultKeepsService
     VaultKeep vaultkeep = GetVaultKeepById(vaultKeepId);
     if (vaultkeep.CreatorId != id)
     {
-      throw new Exception($"You cannot delete thatbecause it doesn't belong to you!");
+      throw new Exception($"You cannot delete that because it doesn't belong to you!");
     }
     _vaultKeepsRepository.RemoveVaultKeep(vaultKeepId);
     }
