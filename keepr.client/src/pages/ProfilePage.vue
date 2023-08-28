@@ -13,7 +13,7 @@
         
         <h2 class="text-center mt-3">{{ profile?.name }}</h2>
 
-        <h5 class="text-center"># Vaults | # Keeps</h5>
+        <h5 class="text-center">{{vaultCount}} Vaults | {{keepCount}} Keeps</h5>
       </div>
     </div>
 
@@ -94,7 +94,9 @@ export default {
         return {
             profile: computed(() => AppState.activeProfile),
           vaults: computed(() => AppState.vaults),
-            keeps: computed(()=> AppState.profileKeeps)
+          keeps: computed(() => AppState.profileKeeps),
+          keepCount: computed(() => AppState.profileKeeps.length),
+            vaultCount: computed(()=> AppState.vaults.length)
         };
     },
     components: { KeepComponent }
