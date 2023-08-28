@@ -2,9 +2,20 @@
   <nav class="navbar navbar-expand-lg px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div>
-        <h1 class="fs-3">HOME</h1>
+        <h1 class="fs-4">HOME</h1>
       </div>
     </router-link>
+    
+    <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    CREATE
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item text-white top-option" href="#">new keep</a></li>
+    <li><a class="dropdown-item text-white" href="#">new vault</a></li>
+  </ul>
+</div>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -22,6 +33,7 @@
 </template>
 
 <script>
+
 import Login from './Login.vue';
 export default {
   setup() {
@@ -48,6 +60,15 @@ a:hover {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.dropdown-menu{
+  background-color: #877A8F;
+  border: 1px solid black;
+}
+
+.top-option{
+  border-bottom: 1px solid black;
 }
 
 @media screen and (min-width: 768px) {
