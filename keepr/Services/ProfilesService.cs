@@ -24,9 +24,9 @@ public class ProfilesService
     return profile;
     }
 
-    // internal List<Keep> GetUserKeepsByProfileId(string profileId)
-    // {
-    // List<Keep> keeps = _profilesRepository.GetUserKeepsByProfileId(profileId);
-    // return keeps;
-    // }
+    internal List<Keep> GetUserKeepsByProfileId(string profileId)
+    {
+    List<Keep> keeps = _profilesRepository.GetUserKeepsByProfileId(profileId);
+    return keeps;
+    }
 }

@@ -24,8 +24,12 @@ public class ProfilesRepository
     return profile;
     }
 
-    // internal List<Keep> GetUserKeepsByProfileId(string profileId)
-    // {
+    internal List<Keep> GetUserKeepsByProfileId(string profileId)
+    {
+    string sql = @"SELECT * FROM keeps WHERE creatorId = @profileId;";
+
+    List<Keep> keeps = _db.Query<Keep>(sql, new { profileId }).ToList();
+    return keeps;
+    }
     
-    // }
 }
