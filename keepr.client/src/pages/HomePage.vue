@@ -15,10 +15,11 @@
 <script>
 import Pop from "../utils/Pop.js";
 import {keepsService} from '../services/KeepsService.js'
-import { computed, onMounted, watch, watchEffect } from "vue";
+import { computed, onMounted,  watchEffect } from "vue";
 import { AppState } from "../AppState.js";
 import KeepComponent from "../components/KeepComponent.vue";
 import { accountService } from "../services/AccountService.js";
+
 
 export default {
     setup() {
@@ -38,7 +39,7 @@ export default {
             }
             catch (error)
             {
-              return Pop.error(error.message)
+            return Pop.error(error.message)
             }
         }
 
@@ -48,13 +49,14 @@ export default {
         });
 
         watchEffect(() => {
-                        if (AppState.account.id) {
+            if (AppState.account.id) {
                 getMyVaults()
             }
-        })
+        });
         
         return {
-            keeps: computed(() => AppState.keeps)
+            keeps: computed(() => AppState.keeps),
+
         };
     },
     components: { KeepComponent }
