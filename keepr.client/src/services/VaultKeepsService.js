@@ -14,6 +14,8 @@ class VaultKeepsService {
   async getVaultKeeps() {
     const res = await api.get('api/vaultkeeps')
     logger.log(res.data)
+    AppState.vaultKeeps = res.data.map(v => new VaultKeep(v))
+
   }
 
   async removeVaultKeep(vaultKeepId) {
@@ -22,6 +24,11 @@ class VaultKeepsService {
     const index = AppState.keptKeeps.findIndex(i => i.id == vaultKeepId)
     AppState.vaultKeeps.splice(index, 1)
   }
+
+  // async getVaultKeeps(userId) {
+  //   const res = await api.get('api/vaultKeeps')
+  //   logger.log('vault keeps', res.data)
+  // }
 }
 
 export const vaultKeepsService = new VaultKeepsService()

@@ -46,6 +46,7 @@ import { computed, onMounted } from "vue";
 import { AppState } from "../AppState.js";
 import { keepsService } from "../services/KeepsService.js";
 import VaultKeepComponent from "../components/VaultKeepComponent.vue";
+import { vaultKeepsService } from "../services/VaultKeepsService.js";
 
 
 export default {
@@ -71,11 +72,27 @@ export default {
                 if (error.response.data.includes(`${route.params.vaultId}`)) {
                     router.push({ name: 'Home' });
                 }
-            }
+          }
     }
-        onMounted(() => {
+        
+        async function getVaultKeeps(){
+          try 
+          {
+            
+            await vaultKeepsService.getVaultKeeps()
+          }
+          catch (error)
+          {
+            return Pop.error(error.message)
+          }
+    }
+        
+    onMounted(() => {
+      getVaultKeeps();
             getVaultById();
-            getKeepsByVaultId();
+          getKeepsByVaultId();
+          
+          
         });
         return {
             vault: computed(() => AppState.activeVault),
