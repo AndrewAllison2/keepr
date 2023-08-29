@@ -54,7 +54,7 @@ public class VaultKeepsController : ControllerBase
     }
 
         [HttpGet]
-    [Authorize]
+
     public async Task<ActionResult<List<VaultKeep>>> GetVaultKeeps()
     {
       try 

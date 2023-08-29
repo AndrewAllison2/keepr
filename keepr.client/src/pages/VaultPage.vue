@@ -8,6 +8,10 @@
           <h1>{{ vault?.name }}</h1>
           <h2 class="fs-4">By {{ vault?.creator?.name }}</h2>
         </div>
+
+        <div>
+          <button class="btn btn-danger" @click="removeVault()">Delete Vault</button>
+        </div>
       </div>
 
       <div class="text-center">
