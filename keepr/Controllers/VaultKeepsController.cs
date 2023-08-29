@@ -52,4 +52,20 @@ public class VaultKeepsController : ControllerBase
         return BadRequest(e.Message);
       }
     }
+
+        [HttpGet]
+    [Authorize]
+    public async Task<ActionResult<List<VaultKeep>>> GetVaultKeeps()
+    {
+      try 
+      {
+      Account userInfo = await _auth0.GetUserInfoAsync<Account>(HttpContext);
+      List<VaultKeep> vaultkeeps = _vaultKeepsService.GetVaultKeeps(userInfo.Id);
+      return Ok(vaultkeeps);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
 }

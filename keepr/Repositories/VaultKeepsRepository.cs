@@ -35,6 +35,14 @@ public class VaultKeepsRepository
     return vaultkeep;
     }
 
+    internal List<VaultKeep> GetVaultKeeps( string userId)
+    {
+    string sql = @"SELECT * FROM vaultKeeps WHERE creatorId = @userId;";
+
+    List<VaultKeep> vaultkeeps = _db.Query<VaultKeep>(sql, new { userId }).ToList();
+    return vaultkeeps;
+    }
+
     internal void RemoveVaultKeep(int vaultKeepId)
     {
     string sql = @"DELETE FROM vaultKeeps WHERE id = @vaultKeepId LIMIT 1;";
