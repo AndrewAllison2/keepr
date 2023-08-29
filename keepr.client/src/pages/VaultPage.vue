@@ -1,9 +1,3 @@
-<!-- TODO 
-    - vaults dont have creator populated
-    
-    - edit account
-    -->
-
 
 <template>
   <div class="container-fluid">
