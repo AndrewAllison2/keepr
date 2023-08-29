@@ -1,5 +1,5 @@
 <template>
-  <div class="hero-img">
+  
 
     <div class="container-fluid">
       <div class="row">
@@ -12,10 +12,12 @@
 
       <div class="row">
         <div class="col-8 m-auto text-center mt-3">
-          <h1 class="mt-3">Welcome {{ account.name }}</h1>
-          <img class="rounded mt-3" :src="account.picture" alt="" />
+          <h1 class="mt-3"> {{ account.name }}</h1>
+          <img class="mt-3 avatar" :src="account.picture" alt="" />
           <!-- <p class="mt-4">{{ account.email }}</p> -->
         </div>
+
+        <h5 class="text-center"> Vaults |  Keeps</h5>
       </div>
     
       <div class="text-center mt-5">
@@ -23,7 +25,7 @@
       </div>
     
     </div>
-  </div>
+  
 </template>
 
 <script>
@@ -32,7 +34,9 @@ import { AppState } from '../AppState';
 export default {
   setup() {
     return {
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      keepCount: computed(() => AppState.profileKeeps.length),
+      vaultCount: computed(()=> AppState.vaults.length)
     }
   }
 }
@@ -65,5 +69,11 @@ export default {
 
 body{
   padding: 0%;
+}
+
+.avatar{
+  border-radius: 100%;
+  height: 10em;
+  width: 10em;
 }
 </style>
