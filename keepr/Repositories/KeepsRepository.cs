@@ -116,7 +116,7 @@ public class KeepsRepository
     List<VaultedKeep> keeps = _db.Query<VaultKeep, VaultedKeep, Account, VaultedKeep>(
       sql,
       (vaultkeep, keep, profile) => {
-        keep.vaultKeepId = vaultkeep.VaultId;
+        keep.vaultKeepId = vaultkeep.Id;
         keep.Creator = profile;
         return keep;
       },

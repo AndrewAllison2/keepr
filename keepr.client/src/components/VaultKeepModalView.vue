@@ -38,7 +38,7 @@
           
             <div v-if="vault?.creatorId == account?.id">
                             
-                <button class="btn drop-down" @click="removeVaultKeep(this.keep)">Remove from Vault</button>
+                <button class="btn drop-down" @click="removeVaultKeep(keep)">Remove from Vault</button>
               </div>
               
             <div v-if="keep" class="d-flex align-items-center">

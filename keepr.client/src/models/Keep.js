@@ -8,6 +8,7 @@ export class Keep {
     this.views = data.views
     this.kept = data.kept
     this.creator = data.creator
+    this.vaultKeepId = data.vaultKeepId
     this.createdAt = new Date(data.createdAt)
     this.updatedAt = new Date(data.updatedAt)
   }
