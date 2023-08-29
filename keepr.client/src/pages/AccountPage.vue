@@ -3,6 +3,14 @@
 
     <div class="container-fluid">
       <div class="row">
+        <div class="col-8 m-auto mt-4">
+        <div class="text-center">
+          <img class="img-fluid cover-img" :src="account?.coverImg" :alt="account?.name">
+        </div>
+        </div>
+      </div>
+
+      <div class="row">
         <div class="col-8 m-auto text-center mt-3">
           <h1 class="mt-3">Welcome {{ account.name }}</h1>
           <img class="rounded mt-3" :src="account.picture" alt="" />
@@ -13,6 +21,7 @@
       <div class="text-center mt-5">
         <button class="btn save-btn" data-bs-toggle="modal" data-bs-target="#editAccount">Edit Account</button>
       </div>
+    
     </div>
   </div>
 </template>
@@ -30,9 +39,7 @@ export default {
 </script>
 
 <style scoped>
-img {
-  max-width: 100px;
-}
+
 
 .save-btn {
   background-color: #A277D940;
@@ -49,6 +56,11 @@ img {
   margin-top: 1em;
   border-radius: 5px;
 
+}
+
+.cover-img{
+  width:fit-content;
+  max-height: 15em;
 }
 
 body{

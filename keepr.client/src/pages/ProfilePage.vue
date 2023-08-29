@@ -2,12 +2,12 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-8 m-auto">
+      <div class="col-8 m-auto mt-4">
         <div class="text-center">
           <img :src="profile?.coverImg" :alt="profile?.name">
         </div>
 
-        <div class="text-center">
+        <div class="text-center mt-4">
           <img class="img-fluid avatar" :src="profile?.picture" :alt="profile?.name">
         </div>
         
