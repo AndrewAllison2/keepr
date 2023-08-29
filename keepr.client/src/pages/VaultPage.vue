@@ -50,10 +50,12 @@ import { vaultKeepsService } from "../services/VaultKeepsService.js";
 export default {
     setup() {
         const route = useRoute();
-        const router = useRouter();
+    const router = useRouter();
+        
         async function getKeepsByVaultId() {
             try {
-                const vaultId = route.params.vaultId;
+              const vaultId = route.params.vaultId;
+                
                 await keepsService.getKeepsByVaultId(vaultId);
             }
             catch (error) {
