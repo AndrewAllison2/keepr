@@ -77,7 +77,6 @@ export default {
       keep: computed(() => AppState.activeKeep),
       myVaults: computed(() => AppState.myVaults),
       selectedVault,
-      
 
 
       async createVaultKeep() {
