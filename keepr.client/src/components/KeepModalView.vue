@@ -77,6 +77,11 @@ export default {
       keep: computed(() => AppState.activeKeep),
       myVaults: computed(() => AppState.myVaults),
       selectedVault,
+      kept: computed(() => {
+        return AppState.vaultKeeps.find(k => k.keepId == AppState.activeKeep.id)
+        
+      }),
+      
 
 
       async createVaultKeep() {
@@ -86,6 +91,7 @@ export default {
             formData.vaultId = selectedVault.value
           formData.keepId = AppState.activeKeep.id
           await vaultKeepsService.createVaultKeep(formData)
+          Pop.toast(`${AppState.activeKeep.name} has been kept`)
 
         }
         catch (error)

@@ -8,7 +8,7 @@ class VaultKeepsService {
   async createVaultKeep(formData) {
     const res = await api.post('api/vaultKeeps', formData)
     logger.log('creating VK', res.data)
-    AppState.vaultKeeps = res.data.map(v => new VaultKeep(v))
+    AppState.vaultKeeps.push(new VaultKeep(res.data))
   }
 }
 
