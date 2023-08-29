@@ -1,5 +1,13 @@
 <template>
-    <img class="img-fluid vault-img mt-4" :src="vaultProp?.img" alt="">
+  <div class="cards">
+    <img class="img-fluid vault-img mt-4" :src="vaultProp?.img" :alt="vaultProp?.name">
+
+    <div class="vault-info d-flex justify-content-between px-4">
+      <h4>{{ vaultProp?.name }}</h4>
+      <i v-if="vaultProp?.isPrivate == true" class="mdi mdi-lock" title="Private Vault"></i>
+    </div>
+
+  </div>
 
     
 </template>
@@ -42,6 +50,13 @@ export default {
   top: -13em;
   right: -20em;
   margin-bottom: -2em;
+}
+
+.vault-info{
+  position: relative;
+  top: -3em;
+  text-shadow: 1px 1px black;
+  color: white;
 }
 
 </style>
