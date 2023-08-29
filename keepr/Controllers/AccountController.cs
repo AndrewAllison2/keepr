@@ -54,7 +54,7 @@ public class AccountController : ControllerBase
     {
       Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
       
-      Account account = _accountService.Edit(editData, userInfo.Email);
+      Profile account = _accountService.Edit(editData, userInfo.Email);
       return Ok(account);
     }
     catch (Exception e)

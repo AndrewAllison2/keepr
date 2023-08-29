@@ -32,7 +32,7 @@ public class AccountsRepository
     return newAccount;
   }
 
-  internal Account Edit(Account update)
+  internal Profile Edit(Profile update)
   {
     string sql = @"
             UPDATE accounts
