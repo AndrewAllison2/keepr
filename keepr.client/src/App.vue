@@ -25,6 +25,11 @@
     <template #body><CreateVaultForm/></template>
   </FormsModal>
 
+  <FormsModal id="editAccount">
+    <template #header>Edit Account</template>
+    <template #body><EditAccountForm/></template>
+  </FormsModal>
+
 </template>
 
 <script>
@@ -36,6 +41,7 @@ import FormsModal from "./components/FormsModal.vue"
 import CreateVaultForm from "./components/CreateVaultForm.vue"
 import KeepModalView from "./components/KeepModalView.vue"
 import VaultKeepModalView from "./components/VaultKeepModalView.vue"
+import EditAccountForm from "./components/EditAccountForm.vue"
 
 
 export default {
@@ -44,7 +50,7 @@ export default {
       appState: computed(() => AppState)
     }
   },
-  components: { Navbar, ModalComponent, FormsModal, CreateVaultForm, KeepModalView, VaultKeepModalView }
+  components: { Navbar, ModalComponent, FormsModal, CreateVaultForm, KeepModalView, VaultKeepModalView, EditAccountForm }
 }
 </script>
 <style lang="scss">

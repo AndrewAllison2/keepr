@@ -4,6 +4,10 @@
     <img class="rounded" :src="account.picture" alt="" />
     <p>{{ account.email }}</p>
   </div>
+
+  <div class="text-center">
+    <button class="btn " data-bs-toggle="modal" data-bs-target="#editAccount">Edit Account</button>
+  </div>
 </template>
 
 <script>
