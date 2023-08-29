@@ -50,7 +50,7 @@ import { useRoute } from "vue-router";
 import Pop from "../utils/Pop.js";
 import { profilesService } from '../services/ProfilesService.js'
 import { vaultsService } from '../services/VaultsService.js'
-import { computed, onMounted, watchEffect } from "vue";
+import { computed, onMounted } from "vue";
 import { AppState } from "../AppState.js";
 import KeepComponent from "../components/KeepComponent.vue";
 import { keepsService } from "../services/KeepsService.js";
@@ -59,7 +59,8 @@ import { keepsService } from "../services/KeepsService.js";
 
 export default {
     setup() {
-        const route = useRoute();
+    const route = useRoute();
+
         async function getProfileById() {
             try {
                 const profileId = route.params.profileId;
@@ -75,7 +76,8 @@ export default {
                 await vaultsService.getProfileVaults(profileId);
             }
             catch (error) {
-                return Pop.error(error.message);
+              return Pop.error(error.message);
+
             }
     }
 

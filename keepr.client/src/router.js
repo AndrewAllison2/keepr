@@ -23,10 +23,10 @@ const routes = [
     // beforeEnter: authSettled
   },
   {
-    path: '/:vaultId',
+    path: '/:profileId/:vaultId',
     name: 'Vault',
     component: loadPage('VaultPage'),
-    // beforeEnter: authSettled
+    beforeEnter: authSettled
   },
   {
     path: '/account',
