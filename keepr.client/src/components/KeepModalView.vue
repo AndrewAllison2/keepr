@@ -67,6 +67,7 @@ import { AppState } from "../AppState.js";
 import Pop from "../utils/Pop.js";
 import { logger } from "../utils/Logger.js";
 import { vaultKeepsService } from '../services/VaultKeepsService.js'
+import { Modal } from "bootstrap";
 
 export default {
   setup() {
@@ -92,6 +93,7 @@ export default {
           formData.keepId = AppState.activeKeep.id
           await vaultKeepsService.createVaultKeep(formData)
           Pop.toast(`${AppState.activeKeep.name} has been kept`)
+          Modal.getOrCreateInstance('#keepModal').hide()
 
         }
         catch (error)
