@@ -66,9 +66,10 @@ import { AppState } from "../AppState.js";
 import Pop from "../utils/Pop.js";
 import { logger } from "../utils/Logger.js";
 import { vaultKeepsService } from "../services/VaultKeepsService.js";
+import { Account } from "../models/Account.js";
 
 export default {
-  setup(){
+  setup() {
     return {
       keep: computed(() => AppState.activeKeep),
 
@@ -79,7 +80,7 @@ export default {
           if (!await Pop.confirm('Are you sure you want to remove this keep from your vault?')) {
             return
           }
-          const vaultKeep = AppState.vaultKeeps.find(k => k.keepId == keep.id)
+          const vaultKeep = AppState.keptKeeps.find(k => k.keepId == keep.id && k.creatorId == AppState.account.id)
           await vaultKeepsService.removeVaultKeep(vaultKeep.id)
         }
         catch (error)
