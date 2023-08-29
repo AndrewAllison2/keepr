@@ -54,7 +54,7 @@ public class VaultsService
 
     internal void RemoveVault(int vaultId, string id)
     {
-    Vault vault = GetVaultById(vaultId);
+    Vault vault = GetVaultById(vaultId, id);
     if (vault.CreatorId != id)
     {
       throw new Exception($"You are not the creator of {vault.Name}! You cannot delete it!");
