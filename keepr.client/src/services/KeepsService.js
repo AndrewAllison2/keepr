@@ -37,6 +37,12 @@ class KeepsService {
     AppState.keeps.splice(foundIndex, 1)
   }
 
+  async getKeepsByVaultId(vaultId) {
+    const res = await api.get(`api/vaults/${vaultId}/keeps`)
+    logger.log('getting vault keeps', res.data)
+    AppState.keptKeeps = res.data.map(v => new Keep(v))
+  }
+
 }
 
 
