@@ -3,14 +3,17 @@
   <form @submit.prevent="editAccount()">
     <div class="mb-2">
         <label for="name">Name</label>
-        <input class="form-control" type="text" id="name" minlength="3" maxlength="75" v-model="editable.name">
+        <input class="form-control" type="text" id="name" minlength="3" required maxlength="75" v-model="editable.name">
       </div>
       
       <div class="mb-2">
         <label for="picture">Picture</label>
-        <input class="form-control" type="url" id="picture" minlength="3" maxlength="200" v-model="editable.picture">
+        <input class="form-control" type="url" id="picture" minlength="3" required maxlength="200" v-model="editable.picture">
       </div>
-      <button class="btn back-button mt-1" type="submit">Update</button>
+      <div class="mt-3 d-flex justify-content-around">
+        <button class="btn save-btn" data-bs-toggle="modal" data-bs-target="#editAccount">Back</button>
+        <button class="btn save-btn" type="submit">Update</button>
+      </div>
   </form>
 
 </template>
@@ -48,5 +51,11 @@ export default {
 
 
 <style lang="scss" scoped>
-
+.save-btn {
+  background-color: #A277D940;
+  color: black;
+  width: 8em;
+  text-shadow: 1px 1px white;
+  border: 1px solid black;
+}
 </style>
