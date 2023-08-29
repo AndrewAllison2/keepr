@@ -36,12 +36,11 @@
           <div class="col-12 d-flex justify-content-around align-items-center">
 
           
-            <div>
+            <div v-if="vault?.creatorId == account?.id">
                             
                 <button class="btn drop-down" @click="removeVaultKeep(this.keep)">Remove from Vault</button>
+              </div>
               
-              <!-- <button class="btn save-btn fs-5 me-5" @click="createVaultKeep(this.keep?.id)">save</button> -->
-            </div>
             <div v-if="keep" class="d-flex align-items-center">
               <router-link :to="{name: 'Profile', params: {profileId: keep?.creatorId}}">
                 <img class="img-fluid avatar me-2" :src="keep?.creator?.picture" :alt="keep?.creator?.name" title="View Profile" data-bs-toggle="modal" data-bs-target="keepModal">
@@ -72,6 +71,8 @@ export default {
   setup() {
     return {
       keep: computed(() => AppState.activeKeep),
+      vault: computed(() => AppState.activeVault),
+      account: computed(()=> AppState.account),
 
 
       async removeVaultKeep(keep) {

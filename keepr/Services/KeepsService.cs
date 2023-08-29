@@ -89,7 +89,7 @@ public class KeepsService
     {
       
     Vault vault = _vaultsService.GetVaultById(vaultId, userId);
-    if (vault.CreatorId != userId)
+    if (vault.IsPrivate == true)
     {
       throw new Exception("No");
     }
