@@ -92,6 +92,7 @@ export default {
             formData.vaultId = selectedVault.value
           formData.keepId = AppState.activeKeep.id
           await vaultKeepsService.createVaultKeep(formData)
+          selectedVault.value = ''
           Pop.toast(`${AppState.activeKeep.name} has been kept`)
           Modal.getOrCreateInstance('#keepModal').hide()
 
