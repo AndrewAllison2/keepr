@@ -7,7 +7,13 @@
   </main>
 
 
-  <ModalComponent/>
+  <ModalComponent id="keepsModalView">
+    <template #body><KeepModalView/></template>
+  </ModalComponent>
+
+  <ModalComponent id="vaultKeepsView">
+    <template #body><VaultKeepModalView/></template>
+  </ModalComponent>
 
   <FormsModal id="createKeepModal">
     <template #header>Add your Keep</template>
@@ -28,6 +34,9 @@ import Navbar from './components/Navbar.vue'
 import ModalComponent from "./components/ModalComponent.vue"
 import FormsModal from "./components/FormsModal.vue"
 import CreateVaultForm from "./components/CreateVaultForm.vue"
+import KeepModalView from "./components/KeepModalView.vue"
+import VaultKeepModalView from "./components/VaultKeepModalView.vue"
+
 
 export default {
   setup() {
@@ -35,7 +44,7 @@ export default {
       appState: computed(() => AppState)
     }
   },
-  components: { Navbar, ModalComponent, FormsModal, CreateVaultForm }
+  components: { Navbar, ModalComponent, FormsModal, CreateVaultForm, KeepModalView, VaultKeepModalView }
 }
 </script>
 <style lang="scss">

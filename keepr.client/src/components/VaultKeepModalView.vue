@@ -1,4 +1,5 @@
 <template>
+
   <div class="container-fluid">
     <div class="row">
 
@@ -15,9 +16,9 @@
           <h1 class="fs-5">{{ keep?.kept }}</h1>
         </div>
 
-              <div v-if="keep?.creatorId == account?.id" class="text-end">
+              <!-- <div v-if="keep?.creatorId == account?.id" class="text-end">
                 <i class="mdi mdi-close-circle text-danger selectable fs-5" title="Remove this keep" @click="removeKeep(this.keep)"></i>
-              </div>
+              </div> -->
 
         <div class="row mt-5 pt-5 text-center">
           <h1 class="fw-1">{{ keep?.name }}</h1>
@@ -34,18 +35,11 @@
 
           <div class="col-12 d-flex justify-content-around align-items-center">
 
-          <div class="btn-group">
-            <button type="button" :disabled='!selectedVault' class="btn save-btn" @click="createVaultKeep()">save</button>
-            <button type="button" class="btn drop-down dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-              <span class="visually-hidden">Toggle Dropdown</span>
-            </button>
-            <ul class="dropdown-menu">
-              <li v-for="vault in myVaults" :key="vault?.id" :value="vault.id" @click="selectedVault=`${vault.id}`" class="dropdown-item">{{vault?.name}}</li>
-              
-            </ul>
-          </div>
-
+          
             <div>
+                            
+                <button class="btn drop-down" @click="removeVaultKeep(this.keep)">Remove from Vault</button>
+              
               <!-- <button class="btn save-btn fs-5 me-5" @click="createVaultKeep(this.keep?.id)">save</button> -->
             </div>
             <div v-if="keep" class="d-flex align-items-center">
@@ -62,63 +56,31 @@
     </div>
   </div>
 
+
 </template>
 
 
 <script>
-import { computed, ref, } from "vue";
+import { computed } from "vue";
 import { AppState } from "../AppState.js";
 import Pop from "../utils/Pop.js";
 import { logger } from "../utils/Logger.js";
-import { vaultKeepsService } from '../services/VaultKeepsService.js'
-import { Modal } from "bootstrap";
-import { keepsService } from "../services/KeepsService.js";
+import { vaultKeepsService } from "../services/VaultKeepsService.js";
 
 export default {
-  setup() {
-        const selectedVault = ref('')
-
-    
+  setup(){
     return {
       keep: computed(() => AppState.activeKeep),
-      myVaults: computed(() => AppState.myVaults),
-      selectedVault,
-      account: computed(()=> AppState.account),
-      kept: computed(() => {
-        return AppState.vaultKeeps.find(k => k.keepId == AppState.activeKeep.id)
-        
-      }),
-      
 
 
-      async createVaultKeep() {
+      async removeVaultKeep(keep) {
         try 
         {
-          const formData = {}
-            formData.vaultId = selectedVault.value
-          formData.keepId = AppState.activeKeep.id
-          await vaultKeepsService.createVaultKeep(formData)
-          selectedVault.value = ''
-          Pop.toast(`${AppState.activeKeep.name} has been kept`)
-          Modal.getOrCreateInstance('#keepsModalView').hide()
-
-        }
-        catch (error)
-        {
-          return Pop.error(error.message)
-        }
-      },
-
-            async removeKeep(keep) {
-        try 
-        {
-          if (!await Pop.confirm('Are you sure you want to remove this keep?')) {
+          if (!await Pop.confirm('Are you sure you want to remove this keep from your vault?')) {
             return
           }
-          const keepId = keep.id
-          await keepsService.removeKeep(keepId)
-          Modal.getOrCreateInstance('#keepsModalView').hide()
-          Pop.toast(`${keep.name} has been removed!`)
+          const vaultKeep = AppState.vaultKeeps.find(k => k.keepId == keep.id)
+          await vaultKeepsService.removeVaultKeep(vaultKeep.id)
         }
         catch (error)
         {
@@ -161,6 +123,4 @@ export default {
   color: black;
   text-shadow: 1px 1px white;
 }
-
-
 </style>

@@ -27,7 +27,7 @@
       
         <div v-for="keep in keptKeeps" :key="keep.id">
           
-            <KeepComponent :keepProp="keep" />
+            <VaultKeepComponent :keepProp="keep" />
           
         </div>
 </section>
@@ -45,69 +45,59 @@ import { vaultsService } from "../services/VaultsService.js";
 import { computed, onMounted } from "vue";
 import { AppState } from "../AppState.js";
 import { keepsService } from "../services/KeepsService.js";
+import VaultKeepComponent from "../components/VaultKeepComponent.vue";
 
 
 export default {
-  setup() {
-
-    
-    const route = useRoute()
-    const router = useRouter()
-
-    async function getKeepsByVaultId() {
-      try 
-      {
-        const vaultId = route.params.vaultId
-        await keepsService.getKeepsByVaultId(vaultId)
-      }
-      catch (error)
-      {
-        return Pop.error(error.message)
-      }
-    }
-
-    async function getVaultById() {
-      try 
-      {
-        const vaultId = route.params.vaultId
-        await vaultsService.getVaultById(vaultId)
-      }
-      catch (error)
-      {
-        Pop.error(error.message)
-        if (error.response.data.includes(`${route.params.vaultId}`)) {
-          router.push({name: 'Home'})
+    setup() {
+        const route = useRoute();
+        const router = useRouter();
+        async function getKeepsByVaultId() {
+            try {
+                const vaultId = route.params.vaultId;
+                await keepsService.getKeepsByVaultId(vaultId);
+            }
+            catch (error) {
+                return Pop.error(error.message);
+            }
         }
-      }
+        async function getVaultById() {
+            try {
+                const vaultId = route.params.vaultId;
+                await vaultsService.getVaultById(vaultId);
+            }
+            catch (error) {
+                Pop.error(error.message);
+                if (error.response.data.includes(`${route.params.vaultId}`)) {
+                    router.push({ name: 'Home' });
+                }
+            }
     }
-
-    onMounted(() => {
-      getVaultById()
-      getKeepsByVaultId()
-    })
-    return {
-      vault: computed(() => AppState.activeVault),
-      keptKeeps: computed(() => AppState.keptKeeps),
-      account: computed(()=> AppState.account),
-
-      async removeVault() {
-        try 
-        {
-          if (!await Pop.confirm('Are you sure you want to delte this vault?')) {
-            return
-          }
-          const vaultId = route.params.vaultId
-          await vaultsService.removeVault(vaultId)
-          router.push({ name: 'Home' })
-          Pop.toast('Your vault was deleted!')
-        }
-        catch (error)
-        {
-          return Pop.error(error.message)
-        }
-      }
-    }
-  }
+        onMounted(() => {
+            getVaultById();
+            getKeepsByVaultId();
+        });
+        return {
+            vault: computed(() => AppState.activeVault),
+            keptKeeps: computed(() => AppState.keptKeeps),
+            account: computed(() => AppState.account),
+            async removeVault() {
+                try {
+                    if (!await Pop.confirm('Are you sure you want to delte this vault?')) {
+                        return;
+                    }
+                    const vaultId = route.params.vaultId;
+                    await vaultsService.removeVault(vaultId);
+                    router.push({ name: 'Home' });
+                    Pop.toast('Your vault was deleted!');
+                }
+                catch (error) {
+                    return Pop.error(error.message);
+                }
+            }
+        };
+    },
+    components: { VaultKeepComponent }
 }
 </script>
 

@@ -4,8 +4,8 @@
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       
-      
-        <KeepModalView/>
+      <slot name="body"></slot>
+        <!-- <KeepModalView/> -->
       
       
     </div>
@@ -16,13 +16,13 @@
 
 
 <script>
-import KeepModalView from "./KeepModalView.vue";
+// import KeepModalView from "./KeepModalView.vue";
 
 export default {
     setup() {
         return {};
     },
-    components: { KeepModalView }
+    // components: { KeepModalView }
 }
 </script>
 
