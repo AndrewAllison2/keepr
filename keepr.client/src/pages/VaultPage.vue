@@ -42,7 +42,7 @@
 import { useRoute, useRouter } from "vue-router";
 import Pop from "../utils/Pop.js";
 import { vaultsService } from "../services/VaultsService.js";
-import { computed, onMounted } from "vue";
+import { computed, onMounted, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
 import { keepsService } from "../services/KeepsService.js";
 import VaultKeepComponent from "../components/VaultKeepComponent.vue";
@@ -88,12 +88,16 @@ export default {
     }
         
     onMounted(() => {
-      getVaultKeeps();
+      
+      getKeepsByVaultId();
             getVaultById();
-          getKeepsByVaultId();
-          
-          
-        });
+    });
+
+    watchEffect(() => {
+      if (AppState.activeVault.creatorId == AppState.account.id) {
+            getVaultKeeps();
+          }
+    })
         return {
             vault: computed(() => AppState.activeVault),
             keptKeeps: computed(() => AppState.keptKeeps),
