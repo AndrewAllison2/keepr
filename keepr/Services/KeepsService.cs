@@ -57,6 +57,14 @@ public class KeepsService
     return keep;
   }
 
+  internal Keep DecrementKeptCount(int keepId)
+  {
+    Keep keep = GetKeepById(keepId);
+    keep.Kept--;
+    _keepsRepository.UpdateKeep(keep);
+    return keep;
+  }
+
     internal Keep UpdateKeep(int keepId, Keep keepData)
     {
     Keep originalKeep = GetKeepById(keepId);

@@ -31,7 +31,7 @@ public class VaultsService
     }
     if (vault.IsPrivate == true && vault.CreatorId != id)
     {
-      throw new Exception($"No vault with the ID of {vault.Id}");
+      throw new Exception($"No vault with the ID of {vault.Id}, error on the line youve been getting them");
     }
     return vault;
     }

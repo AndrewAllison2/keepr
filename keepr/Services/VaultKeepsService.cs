@@ -20,7 +20,7 @@ public class VaultKeepsService
 
     internal VaultKeep CreateVaultKeep(VaultKeep data)
     {
-    Vault vault = _vaultsService.GetVaultById(data.VaultId);
+    Vault vault = _vaultsService.GetVaultById(data.VaultId, data.CreatorId);
     if (vault.CreatorId != data.CreatorId)
     {
       throw new Exception("You cannot add Keeps to other users vaults");
@@ -52,6 +52,7 @@ public class VaultKeepsService
     {
       throw new Exception($"You cannot delete that because it doesn't belong to you!");
     }
+    _keepsService.DecrementKeptCount(vaultkeep.KeepId);
     _vaultKeepsRepository.RemoveVaultKeep(vaultKeepId);
     }
 }
