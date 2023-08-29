@@ -15,7 +15,7 @@
           <h1 class="fs-5">{{ keep?.kept }}</h1>
         </div>
 
-              <div v-if="keep?.creatorId == account?.id" class="delete-button">
+              <div v-if="keep?.creatorId == account?.id" class="text-end">
                 <i class="mdi mdi-close-circle text-danger selectable fs-5" title="Remove this keep" @click="removeKeep(this.keep)"></i>
               </div>
 
@@ -118,6 +118,7 @@ export default {
           const keepId = keep.id
           await keepsService.removeKeep(keepId)
           Modal.getOrCreateInstance('#keepModal').hide()
+          Pop.toast(`${keep.name} has been removed!`)
         }
         catch (error)
         {
@@ -160,4 +161,6 @@ export default {
   color: black;
   text-shadow: 1px 1px white;
 }
+
+
 </style>

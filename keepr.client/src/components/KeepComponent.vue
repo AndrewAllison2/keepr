@@ -82,13 +82,6 @@ div{
   text-shadow: 2px 2px black;
 }
 
-.delete-button{
-  position: relative;
-  top: -9.7em;
-  left: 6.5em;
-  margin-bottom: -2em;
-}
-
 .avatar{
   height: 3em;
   width: 3em;

@@ -10,9 +10,6 @@
     <div class="row">
       <div class="col-8 m-auto text-center">
         <img class="img-fluid mt-3 vault-img" :src="vault?.img" :alt="vault?.name">
-        <div v-if="vault?.creatorId == account?.id" class="delete-button text-end">
-          <i class="mdi mdi-close-circle fs-4 text-danger selectable" title="Delete this vault" @click="removeVault()"></i>
-    </div>
         <div class="vault-info">
           <h1>{{ vault?.name }}</h1>
           <h2 class="fs-4">By {{ vault?.creator?.name }}</h2>
