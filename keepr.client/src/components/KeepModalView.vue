@@ -31,12 +31,12 @@
           <div class="col-12 d-flex justify-content-around align-items-center">
 
           <div class="btn-group">
-            <button type="button" class="btn save-btn">save</button>
+            <button type="button" :disabled='!selectedVault' class="btn save-btn" @click="createVaultKeep()">save</button>
             <button type="button" class="btn drop-down dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
               <span class="visually-hidden">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu">
-              <li v-for="vault in myVaults" :key="vault.id" class="dropdown-item">{{vault?.name}}</li>
+              <li v-for="vault in myVaults" :key="vault?.id" :value="vault.id" @click="selectedVault=`${vault.id}`" class="dropdown-item">{{vault?.name}}</li>
               
             </ul>
           </div>
@@ -66,6 +66,7 @@ import { computed, ref, } from "vue";
 import { AppState } from "../AppState.js";
 import Pop from "../utils/Pop.js";
 import { logger } from "../utils/Logger.js";
+import { vaultKeepsService } from '../services/VaultKeepsService.js'
 
 export default {
   setup() {
@@ -79,10 +80,14 @@ export default {
       
 
 
-      async createVaultKeep(keepId) {
+      async createVaultKeep() {
         try 
         {
-          logger.log('You gotta write the function bud.....')
+          const formData = {}
+            formData.vaultId = selectedVault.value
+          formData.keepId = AppState.activeKeep.id
+          await vaultKeepsService.createVaultKeep(formData)
+
         }
         catch (error)
         {
