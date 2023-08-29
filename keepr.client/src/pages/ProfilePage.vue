@@ -46,7 +46,7 @@
 
 
 <script>
-import { useRoute } from "vue-router";
+import { useRoute} from "vue-router";
 import Pop from "../utils/Pop.js";
 import { profilesService } from '../services/ProfilesService.js'
 import { vaultsService } from '../services/VaultsService.js'
@@ -76,7 +76,7 @@ export default {
                 await vaultsService.getProfileVaults(profileId);
             }
             catch (error) {
-              return Pop.error(error.message);
+              Pop.error(error.message);
 
             }
     }

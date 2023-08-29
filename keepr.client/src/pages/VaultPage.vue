@@ -62,20 +62,23 @@ export default {
       }
     }
 
-    function setActiveVault() {
+    async function getVaultById() {
       try 
       {
         const vaultId = route.params.vaultId
-        vaultsService.setActiveVault(vaultId)
+        await vaultsService.getVaultById(vaultId)
       }
       catch (error)
       {
-        return Pop.error(error.message)
+        Pop.error(error.message)
+        if (error.response.data.includes(`${route.params.vaultId}`)) {
+          router.push({name: 'Home'})
+        }
       }
     }
 
     onMounted(() => {
-      setActiveVault()
+      getVaultById()
       getKeepsByVaultId()
     })
     return {
