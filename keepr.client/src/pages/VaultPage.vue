@@ -10,7 +10,7 @@
       </div>
 
       <div class="text-center">
-        <h5># Keeps</h5>
+        <h5>{{ keptKeeps.length }} Keeps</h5>
       </div>
 
       <div class="row">
