@@ -64,9 +64,9 @@
 import { computed } from "vue";
 import { AppState } from "../AppState.js";
 import Pop from "../utils/Pop.js";
-import { logger } from "../utils/Logger.js";
 import { vaultKeepsService } from "../services/VaultKeepsService.js";
-import { Account } from "../models/Account.js";
+import { Modal } from "bootstrap";
+
 
 export default {
   setup() {
@@ -80,8 +80,9 @@ export default {
           if (!await Pop.confirm('Are you sure you want to remove this keep from your vault?')) {
             return
           }
-          const vaultKeep = AppState.keptKeeps.find(k => k.keepId == keep.id && k.creatorId == AppState.account.id)
+          const vaultKeep = AppState.vaultKeeps.find(vk => vk.keepId == keep.id && vk.vaultId == AppState.activeVault.id)
           await vaultKeepsService.removeVaultKeep(vaultKeep.id)
+          Modal.getOrCreateInstance('#vaultKeepsView').hide()
         }
         catch (error)
         {
