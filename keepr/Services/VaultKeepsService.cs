@@ -9,11 +9,13 @@ public class VaultKeepsService
 {
   private readonly VaultKeepsRepository _vaultKeepsRepository;
   private readonly VaultsService _vaultsService;
+  private readonly KeepsService _keepsService;
 
-    public VaultKeepsService(VaultKeepsRepository vaultKeepsRepository, VaultsService vaultsService)
+    public VaultKeepsService(VaultKeepsRepository vaultKeepsRepository, VaultsService vaultsService, KeepsService keepsService)
     {
         _vaultKeepsRepository = vaultKeepsRepository;
         _vaultsService = vaultsService;
+        _keepsService = keepsService;
     }
 
     internal VaultKeep CreateVaultKeep(VaultKeep data)
@@ -24,6 +26,7 @@ public class VaultKeepsService
       throw new Exception("You cannot add Keeps to other users vaults");
     }
     VaultKeep vaultkeep = _vaultKeepsRepository.CreateVaultKeep(data);
+    _keepsService.IncrementKeptCount(data.KeepId, vaultkeep.Id);
     return vaultkeep;
     }
 

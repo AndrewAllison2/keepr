@@ -49,6 +49,14 @@ public class KeepsService
     return keep;
   }
 
+  internal Keep IncrementKeptCount(int keepId, int vaultKeepId)
+  {
+    Keep keep = GetKeepById(keepId);
+    keep.Kept++;
+    _keepsRepository.UpdateKeep(keep);
+    return keep;
+  }
+
     internal Keep UpdateKeep(int keepId, Keep keepData)
     {
     Keep originalKeep = GetKeepById(keepId);
