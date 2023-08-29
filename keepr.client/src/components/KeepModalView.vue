@@ -50,7 +50,7 @@
             </div>
             <div v-if="keep" class="d-flex align-items-center">
               <router-link :to="{name: 'Profile', params: {profileId: keep?.creatorId}}">
-                <img class="img-fluid avatar me-2" :src="keep?.creator?.picture" :alt="keep?.creator?.name" title="View Profile" data-bs-toggle="modal" data-bs-target="keepModal">
+                <img class="img-fluid avatar me-2" :src="keep?.creator?.picture" :alt="keep?.creator?.name" title="View Profile" data-bs-toggle="modal" data-bs-target="#keepsModalView">
               </router-link>
               <p class="h5">{{ keep?.creator?.name }}</p>
             </div>

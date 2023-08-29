@@ -4,13 +4,13 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-8 m-auto text-center mt-3">
-          <h1>Welcome {{ account.name }}</h1>
-          <img class="rounded" :src="account.picture" alt="" />
-          <p class="mt-4">{{ account.email }}</p>
+          <h1 class="mt-3">Welcome {{ account.name }}</h1>
+          <img class="rounded mt-3" :src="account.picture" alt="" />
+          <!-- <p class="mt-4">{{ account.email }}</p> -->
         </div>
       </div>
     
-      <div class="text-center">
+      <div class="text-center mt-5">
         <button class="btn save-btn" data-bs-toggle="modal" data-bs-target="#editAccount">Edit Account</button>
       </div>
     </div>
