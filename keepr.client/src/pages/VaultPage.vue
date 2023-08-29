@@ -1,6 +1,6 @@
 <!-- TODO 
     - vaults dont have creator populated
-    - increment kept count in back end
+    
     - edit account
     -->
 

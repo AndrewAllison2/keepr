@@ -15,6 +15,10 @@
           <h1 class="fs-5">{{ keep?.kept }}</h1>
         </div>
 
+              <div v-if="keep?.creatorId == account?.id" class="delete-button">
+                <i class="mdi mdi-close-circle text-danger selectable fs-5" title="Remove this keep" @click="removeKeep(this.keep)"></i>
+              </div>
+
         <div class="row mt-5 pt-5 text-center">
           <h1 class="fw-1">{{ keep?.name }}</h1>
 
@@ -68,6 +72,7 @@ import Pop from "../utils/Pop.js";
 import { logger } from "../utils/Logger.js";
 import { vaultKeepsService } from '../services/VaultKeepsService.js'
 import { Modal } from "bootstrap";
+import { keepsService } from "../services/KeepsService.js";
 
 export default {
   setup() {
@@ -78,6 +83,7 @@ export default {
       keep: computed(() => AppState.activeKeep),
       myVaults: computed(() => AppState.myVaults),
       selectedVault,
+      account: computed(()=> AppState.account),
       kept: computed(() => {
         return AppState.vaultKeeps.find(k => k.keepId == AppState.activeKeep.id)
         
@@ -96,6 +102,22 @@ export default {
           Pop.toast(`${AppState.activeKeep.name} has been kept`)
           Modal.getOrCreateInstance('#keepModal').hide()
 
+        }
+        catch (error)
+        {
+          return Pop.error(error.message)
+        }
+      },
+
+            async removeKeep(keep) {
+        try 
+        {
+          if (!await Pop.confirm('Are you sure you want to remove this keep?')) {
+            return
+          }
+          const keepId = keep.id
+          await keepsService.removeKeep(keepId)
+          Modal.getOrCreateInstance('#keepModal').hide()
         }
         catch (error)
         {

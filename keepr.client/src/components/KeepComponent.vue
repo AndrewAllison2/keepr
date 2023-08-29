@@ -9,10 +9,6 @@
     <img class="img-fluid avatar" :src="keepProp?.creator?.picture" :alt="keepProp?.creator?.name" :title="keepProp?.creator?.name">
   </div>
 
-      <div v-if="keepProp.creatorId == account.id" class="delete-button">
-      <i class="mdi mdi-close-circle text-danger selectable fs-5" title="Remove this keep" @click="removeKeep(this.keepProp)"></i>
-    </div>
-
 
 
 
