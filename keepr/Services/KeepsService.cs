@@ -79,7 +79,12 @@ public class KeepsService
 
     internal List<VaultedKeep> GetKeepsByVaultId(int vaultId, string userId)
     {
-    _vaultsService.GetVaultById(vaultId, userId);
+      
+    Vault vault = _vaultsService.GetVaultById(vaultId, userId);
+    if (vault.CreatorId != userId)
+    {
+      throw new Exception("No");
+    }
         List<VaultedKeep> keeps = _keepsRepository.GetKeepsByVaultId(vaultId);
     return keeps;
     }
