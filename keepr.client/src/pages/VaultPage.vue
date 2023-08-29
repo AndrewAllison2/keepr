@@ -3,6 +3,9 @@
     <div class="row">
       <div class="col-8 m-auto text-center">
         <img class="img-fluid mt-3 vault-img" :src="vault?.img" :alt="vault?.name">
+        <div v-if="vault?.creatorId == account?.id" class="delete-button text-end">
+          <i class="mdi mdi-close-circle fs-4 text-danger selectable" title="Delete this vault" @click="removeVault()"></i>
+    </div>
         <div class="vault-info">
           <h1>{{ vault?.name }}</h1>
           <h2 class="fs-4">By {{ vault?.creator?.name }}</h2>
@@ -32,18 +35,20 @@
 
 
 <script>
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import Pop from "../utils/Pop.js";
 import { vaultsService } from "../services/VaultsService.js";
 import { computed, onMounted } from "vue";
 import { AppState } from "../AppState.js";
 import { keepsService } from "../services/KeepsService.js";
 
+
 export default {
   setup() {
 
     
     const route = useRoute()
+    const router = useRouter()
 
     async function getKeepsByVaultId() {
       try 
@@ -75,7 +80,25 @@ export default {
     })
     return {
       vault: computed(() => AppState.activeVault),
-      keptKeeps: computed(()=> AppState.keptKeeps)
+      keptKeeps: computed(() => AppState.keptKeeps),
+      account: computed(()=> AppState.account),
+
+      async removeVault() {
+        try 
+        {
+          if (!await Pop.confirm('Are you sure you want to delte this vault?')) {
+            return
+          }
+          const vaultId = route.params.vaultId
+          await vaultsService.removeVault(vaultId)
+          router.push({ name: 'Home' })
+          Pop.toast('Your vault was deleted!')
+        }
+        catch (error)
+        {
+          return Pop.error(error.message)
+        }
+      }
     }
   }
 }
@@ -89,7 +112,7 @@ export default {
 
 .vault-info{
   position: relative;
-  top: -7em;
+  top: -9em;
   // right: -40.5em;
   color: white;
   text-shadow: 2px 2px black;
