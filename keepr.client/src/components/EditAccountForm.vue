@@ -10,6 +10,12 @@
         <label for="picture">Picture</label>
         <input class="form-control" type="url" id="picture" minlength="3" required maxlength="200" v-model="editable.picture">
       </div>
+
+      <div class="mb-2">
+        <label for="coverImg">Cover Image</label>
+        <input class="form-control" type="url" id="voverImg" minlength="3" required maxlength="200" v-model="editable.coverImg">
+      </div>
+
       <div class="mt-3 d-flex justify-content-around">
         <button class="btn save-btn" data-bs-toggle="modal" data-bs-target="#editAccount">Back</button>
         <button class="btn save-btn" type="submit">Update</button>
