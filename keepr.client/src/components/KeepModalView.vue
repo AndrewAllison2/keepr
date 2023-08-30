@@ -46,7 +46,7 @@
           </div> -->
 
           <div v-if="account.id" class="dropdown">
-            <button class="btn save-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn save-btn dropdown-toggle" :hidden="hasVaults == false" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Save to Vault
             </button>
               <ul class="dropdown-menu">
@@ -95,7 +95,11 @@ export default {
       account: computed(()=> AppState.account),
       kept: computed(() => {
         return AppState.vaultKeeps.find(k => k.keepId == AppState.activeKeep.id)
-        
+      }),
+      hasVaults: computed(() => {
+        if (AppState.myVaults.length == 0) {
+          return false
+        }return true
       }),
       
 
