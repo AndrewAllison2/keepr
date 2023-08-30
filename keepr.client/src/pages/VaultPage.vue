@@ -97,7 +97,8 @@ export default {
         return {
             vault: computed(() => AppState.activeVault),
             keptKeeps: computed(() => AppState.keptKeeps),
-            account: computed(() => AppState.account),
+          account: computed(() => AppState.account),
+            
             async removeVault() {
                 try {
                     if (!await Pop.confirm('Are you sure you want to delte this vault?')) {
