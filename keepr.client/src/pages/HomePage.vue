@@ -82,6 +82,13 @@ export default {
       } 
 }
 
+@media screen and (max-width: 769px){
+        .masonry-with-columns {
+    columns: 2 100px;
+    column-gap: 1rem;
+    }
+}
+
 
 
 </style>

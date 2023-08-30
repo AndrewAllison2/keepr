@@ -163,7 +163,8 @@ export default {
 @media screen and (max-width: 769px) {
   .keep-img{
     width: 100vw;
-    object-fit:fill
+    object-fit:fill;
+    object-position: center;
   }
 
   .avatar {
