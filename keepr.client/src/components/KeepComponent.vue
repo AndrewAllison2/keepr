@@ -85,7 +85,7 @@ div{
 }
 
 .avatar{
-  height: 2.5em;
+  // height: 2.5em;
   width: 2.5em;
   border-radius: 50%;
   aspect-ratio: 1;

@@ -111,7 +111,8 @@ export default {
 <style lang="scss" scoped>
 .avatar{
   border-radius: 100%;
-  height: 10em;
+  // height: 10em;
+  aspect-ratio: 1;
   width: 10em;
 }
 

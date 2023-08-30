@@ -122,7 +122,8 @@ export default {
 
 <style lang="scss" scoped>
 .vault-img{
-  height: 45vh;
+  
+  width: 45vw;
   aspect-ratio: 1/1;
 }
 
@@ -160,6 +161,11 @@ export default {
     column-gap: 1rem;
     padding-left: 0;
     padding-right: 0;
+    }
+
+    .vault-img{
+      width: 90vw;
+      aspect-ratio: 1/1;
     }
 }
 </style>

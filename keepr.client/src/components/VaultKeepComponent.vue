@@ -86,9 +86,10 @@ div{
 }
 
 .avatar{
-  height: 3em;
+  
   width: 3em;
   border-radius: 50%;
+  aspect-ratio: 1/1;
 }
 
 .keep-name{
