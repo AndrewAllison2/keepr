@@ -6,7 +6,7 @@
     </div>
     
     <div class="keep-info d-flex justify-content-around align-items-center">
-      <h1 class="fs-5">{{ keepProp?.name }}</h1>
+      <h1 class="fs-5 keep-name">{{ keepProp?.name }}</h1>
       <img class="img-fluid avatar" :src="keepProp?.creator?.picture" :alt="keepProp?.creator?.name" :title="keepProp?.creator?.name">
     </div>
   
@@ -89,6 +89,14 @@ div{
   width: 2.5em;
   border-radius: 50%;
   aspect-ratio: 1;
+}
+
+.keep-name{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  max-height: 4em;
+  margin-left: 2px;
 }
 
 @media screen and (max-width: 769px){
