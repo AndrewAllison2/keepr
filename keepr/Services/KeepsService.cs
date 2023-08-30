@@ -30,7 +30,7 @@ public class KeepsService
     return keeps;
     }
 
-    internal Keep GetKeepById(int keepId, string userId = null)
+    internal Keep GetKeepById(int keepId)
     {
     Keep keep = _keepsRepository.GetKeepById(keepId);
 
@@ -43,7 +43,7 @@ public class KeepsService
 
   internal Keep GetKeepByIdAndUpdateVisits(int keepId, string userId = null)
   {
-    Keep keep = GetKeepById(keepId, userId);
+    Keep keep = GetKeepById(keepId);
     keep.Views ++;
     _keepsRepository.UpdateKeep(keep);
     return keep;
