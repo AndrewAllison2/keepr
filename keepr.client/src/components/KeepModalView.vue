@@ -153,7 +153,7 @@ export default {
 .save-btn {
   background-color: #A277D940;
   color: black;
-  width: 5em;
+  width: 8.5em;
   text-shadow: 1px 1px white;
 }
 

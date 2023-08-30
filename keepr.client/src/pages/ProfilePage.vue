@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-8 m-auto mt-4">
         <div class="text-center">
-          <img :src="profile?.coverImg" :alt="profile?.name">
+          <img class="img-fluid" :src="profile?.coverImg" :alt="profile?.name">
         </div>
 
         <div class="text-center mt-4">
@@ -13,12 +13,12 @@
         
         <h2 class="text-center mt-3">{{ profile?.name }}</h2>
 
-        <h5 class="text-center">{{vaultCount}} Vaults | {{keepCount}} Keeps</h5>
+        <h5 class="text-center vk-info">{{vaultCount}} Vaults | {{keepCount}} Keeps</h5>
       </div>
     </div>
 
     <!-- SECTION VAULTS -->
-    <div class="row">
+    <div class="row mt-2">
       <h4>VAULTS</h4>
       <div v-for="v in vaults" :key="v.id" class="col-12 col-md-3">
         <router-link :to="{name: 'Vault', params:{vaultId: v?.id}}">
@@ -129,5 +129,21 @@ export default {
         text-align: center;
         border-radius: 3%;
       } 
+}
+
+.vk-info{
+  background-color: #A277D940;
+  color: black;
+  // width: 8.5em;
+  padding: 8px;
+  border-radius: 5px;
+  text-shadow: 1px 1px white;
+}
+
+@media screen and (max-width: 769px){
+        .masonry-with-columns {
+    columns: 2 100px;
+    column-gap: 1rem;
+    }
 }
 </style>
