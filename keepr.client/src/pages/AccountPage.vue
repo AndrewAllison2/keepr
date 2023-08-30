@@ -33,7 +33,20 @@
       </div>
     </div>
     
+    <div class="row mt-5">
+      <h4>KEEPS</h4>
     </div>
+    </div>
+
+    <section class="masonry-with-columns mt-3">
+    
+      
+        <div v-for="keep in myKeeps" :key="keep.id">
+          
+            <KeepComponent :keepProp="keep" />
+          
+        </div>
+      </section>
   
 </template>
 
@@ -42,36 +55,39 @@ import { computed, onMounted } from 'vue';
 import { AppState } from '../AppState';
 import Pop from "../utils/Pop.js";
 import { vaultsService } from "../services/VaultsService.js";
+import { keepsService } from "../services/KeepsService.js";
+import KeepComponent from "../components/KeepComponent.vue";
 export default {
   setup() {
-
-    async function getAccountVaults() {
-      try 
-      {
-        
-        await vaultsService.getAccountVaults()
-      }
-      catch (error)
-      {
-        return Pop.error(error.message)
-      }
-    }
+      
+        async function getAccountVaults() {
+            try {
+                await vaultsService.getAccountVaults();
+            }
+            catch (error) {
+                return Pop.error(error.message);
+            }
+        }
 
     async function getAccountKeeps() {
-      
-    }
+          
+        }
 
-    onMounted(() => {
-      getAccountVaults()
-    })
-
-    return {
-      account: computed(() => AppState.account),
-      keepCount: computed(() => AppState.profileKeeps.length),
-      vaultCount: computed(() => AppState.accountVaults.length),
-      vaults: computed(()=> AppState.accountVaults)
-    }
-  }
+        onMounted(() => {
+            getAccountVaults();
+            
+        });
+        return {
+            account: computed(() => AppState.account),
+            // keepCount: computed(() => AppState.profileKeeps.length),
+            vaultCount: computed(() => AppState.accountVaults.length),
+            vaults: computed(() => AppState.accountVaults),
+            myKeeps: computed(() => {
+                return AppState.keeps.filter(k => k.creatorId == AppState.account.id);
+            }),
+        };
+    },
+    components: { KeepComponent }
 }
 </script>
 
@@ -108,5 +124,21 @@ body{
   border-radius: 100%;
   height: 10em;
   width: 10em;
+}
+
+.masonry-with-columns {
+  columns: 6 200px;
+  column-gap: 1rem;
+
+    div {
+        width: 150px;
+        background: white;
+        color: white;
+        margin: 0 1rem 1rem 0;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        border-radius: 3%;
+      } 
 }
 </style>
