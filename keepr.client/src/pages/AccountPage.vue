@@ -69,13 +69,9 @@ export default {
             }
         }
 
-    async function getAccountKeeps() {
-          
-        }
-
         onMounted(() => {
             getAccountVaults();
-            
+            keepsService.getKeeps()
         });
         return {
             account: computed(() => AppState.account),
