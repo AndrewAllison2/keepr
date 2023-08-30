@@ -7,19 +7,19 @@ class VaultsService {
 
   async getProfileVaults(profileId) {
     const res = await api.get(`api/profiles/${profileId}/vaults`)
-    logger.log('Gettin profile vaults', res.data)
+    // logger.log('Gettin profile vaults', res.data)
     AppState.vaults = res.data.map(v => new Vault(v))
   }
 
   async createVault(formData) {
     const res = await api.post('api/vaults', formData)
-    logger.log('Creating Vault', res.data)
+    // logger.log('Creating Vault', res.data)
     AppState.vaults.push(new Vault(res.data))
   }
 
   async removeVault(vaultId) {
     const res = await api.delete(`api/vaults/${vaultId}`)
-    logger.log('Removing vault', res.data)
+    // logger.log('Removing vault', res.data)
     const vIndex = AppState.vaults.findIndex(i => i.id == vaultId)
     AppState.vaults.splice(vIndex, 1)
   }
@@ -31,7 +31,7 @@ class VaultsService {
 
   async getAccountVaults() {
     const res = await api.get('account/vaults')
-    logger.log(res.data, 'got my vaults')
+    // logger.log(res.data, 'got my vaults')
     AppState.accountVaults = res.data.map(v => new Vault(v))
   }
 
