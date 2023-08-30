@@ -9,7 +9,7 @@
           <h2 class="fs-4">By {{ vault?.creator?.name }}</h2>
         </div>
 
-        <div>
+        <div v-if="vault?.creator.id == account.id">
           <button class="btn btn-danger" @click="removeVault()">Delete Vault</button>
         </div>
       </div>
