@@ -80,7 +80,7 @@ div{
   position: relative;
   top: -3.2em;
   left: -0em;
-  margin-bottom: -3em;
+  margin-bottom: -4em;
   text-shadow: 2px 2px black;
 }
 
@@ -88,5 +88,12 @@ div{
   height: 2.5em;
   width: 2.5em;
   border-radius: 50%;
+}
+
+@media screen and (max-width: 769px){
+  .avatar{
+    display: none;
+  }
+  
 }
 </style>

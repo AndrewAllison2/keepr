@@ -146,11 +146,11 @@ export default {
 
 .keep-creator{
   margin-top: 1em;
-  padding-left: 4em;
+  padding-left: 3.5em;
 }
 
 .drop-down{
-  margin-left: 5.7em;
+  margin-left: 5.2em;
 }
 }
 </style>

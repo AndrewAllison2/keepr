@@ -32,7 +32,7 @@
           <!-- NOTE THIS IS FOR THE Vaults LATER -->
 
 
-          <div class="col-12 d-flex justify-content-around align-items-center keep-info">
+          <div class="col-12 d-block d-md-flex justify-content-around align-items-center keep-info">
 
           <!-- <div class="btn-group">
             <button type="button" :disabled='!selectedVault' class="btn save-btn" @click="createVaultKeep()">save</button>
@@ -57,7 +57,7 @@
             <div>
               <!-- <button class="btn save-btn fs-5 me-5" @click="createVaultKeep(this.keep?.id)">save</button> -->
             </div>
-            <div v-if="keep" class="d-flex align-items-center ">
+            <div v-if="keep" class="d-flex align-items-center creator">
               <router-link :to="{name: 'Profile', params: {profileId: keep?.creatorId}}">
                 <img class="img-fluid avatar me-2" :src="keep?.creator?.picture" :alt="keep?.creator?.name" title="View Profile" data-bs-toggle="modal" data-bs-target="#keepsModalView">
               </router-link>
@@ -184,6 +184,15 @@ export default {
 
 .keep-info {
   display: block;
+}
+
+.dropdown{
+  margin-left: 6.2em;
+  margin-bottom: 1em;
+}
+
+.creator{
+  padding-left: 4em;
 }
 }
 

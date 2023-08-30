@@ -94,9 +94,7 @@ div{
 @media screen and (max-width: 769px){
 
   .avatar{
-  height: 2em;
-  width: 2em;
-  border-radius: 50%;
+display: none;
 }
 
 .keep-info{
