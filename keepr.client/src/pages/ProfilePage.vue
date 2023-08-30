@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-8 m-auto mt-4">
         <div class="text-center">
-          <img class="img-fluid" :src="profile?.coverImg" :alt="profile?.name">
+          <img class="img-fluid cover-img" :src="profile?.coverImg" :alt="profile?.name">
         </div>
 
         <div class="text-center mt-4">
@@ -113,6 +113,11 @@ export default {
   border-radius: 100%;
   height: 10em;
   width: 10em;
+}
+
+.cover-img{
+  max-height: 40vh;
+  max-width: 60vw;
 }
 
 .masonry-with-columns {

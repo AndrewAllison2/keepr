@@ -17,7 +17,7 @@
           <!-- <p class="mt-4">{{ account.email }}</p> -->
         </div>
 
-        <h5 class="text-center mt-4"> {{vaultCount}} Vaults |  Keeps</h5>
+        <h5 class="text-center mt-4"> {{vaultCount}} Vaults | {{ keepCount }} Keeps</h5>
       </div>
     
       <div class="text-center mt-2">
@@ -80,15 +80,34 @@ export default {
             myKeeps: computed(() => {
               return AppState.keeps.filter(k => k.creatorId == AppState.account.id);
             }),
-            // keepCount: computed(() => myKeeps,length),
+          keepCount: computed(() => {
+            const myKeeps = AppState.keeps.filter(k => k.creatorId == AppState.account.id)
+              return myKeeps.length
+            })
+            
         };
     },
     components: { KeepComponent }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
+.masonry-with-columns {
+  columns: 6 200px;
+  column-gap: 1rem;
+
+    div {
+        width: 150px;
+        background: white;
+        color: white;
+        margin: 0 1rem 1rem 0;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        border-radius: 3%;
+      } 
+}
 
 .save-btn {
   background-color: #A277D940;
@@ -122,21 +141,7 @@ body{
   width: 10em;
 }
 
-.masonry-with-columns {
-  columns: 6 200px;
-  column-gap: 1rem;
 
-    div {
-        width: 150px;
-        background: white;
-        color: white;
-        margin: 0 1rem 1rem 0;
-        display: inline-block;
-        width: 100%;
-        text-align: center;
-        border-radius: 3%;
-      } 
-}
 
 @media screen and (max-width: 769px){
         .masonry-with-columns {
@@ -144,4 +149,5 @@ body{
     column-gap: 1rem;
     }
 }
+
 </style>
