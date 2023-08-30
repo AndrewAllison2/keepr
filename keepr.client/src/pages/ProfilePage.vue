@@ -13,7 +13,7 @@
         
         <h2 class="text-center mt-3">{{ profile?.name }}</h2>
 
-        <h5 class="text-center vk-info">{{vaultCount}} Vaults | {{keepCount}} Keeps</h5>
+        <h3 class="text-center fs-5 vk-info">{{vaultCount}} Vaults | {{keepCount}} Keeps</h3>
       </div>
     </div>
 

@@ -15,7 +15,7 @@
       </div>
 
       <div class="text-center mt-3">
-        <h5>{{ keptKeeps.length }} Keeps</h5>
+        <h3 class="fs-5">{{ keptKeeps.length }} Keeps</h3>
       </div>
 
       <div class="row">

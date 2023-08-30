@@ -6,7 +6,7 @@
     </div>
     
     <div class="keep-info d-flex justify-content-around align-items-center">
-      <h5>{{ keepProp?.name }}</h5>
+      <h1 class="fs-5">{{ keepProp?.name }}</h1>
       <img class="img-fluid avatar" :src="keepProp?.creator?.picture" :alt="keepProp?.creator?.name" :title="keepProp?.creator?.name">
     </div>
   
