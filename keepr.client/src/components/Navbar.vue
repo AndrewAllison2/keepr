@@ -7,7 +7,7 @@
     </router-link>
     
     <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" :hidden="!account.id" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+  <button v-if="$route.path == '/' || $route.path =='/:profileId'" class="btn btn-secondary dropdown-toggle" :hidden="!account.id" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     CREATE
   </button>
   <ul class="dropdown-menu">
