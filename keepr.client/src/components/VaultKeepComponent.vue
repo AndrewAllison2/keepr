@@ -90,4 +90,17 @@ div{
   width: 3em;
   border-radius: 50%;
 }
+
+@media screen and (max-width: 769px){
+
+  .avatar{
+  height: 2em;
+  width: 2em;
+  border-radius: 50%;
+}
+
+.keep-info{
+  top: -2.4em;
+}
+}
 </style>
