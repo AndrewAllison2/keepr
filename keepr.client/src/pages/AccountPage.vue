@@ -75,12 +75,12 @@ export default {
         });
         return {
             account: computed(() => AppState.account),
-            // keepCount: computed(() => AppState.profileKeeps.length),
             vaultCount: computed(() => AppState.accountVaults.length),
             vaults: computed(() => AppState.accountVaults),
             myKeeps: computed(() => {
-                return AppState.keeps.filter(k => k.creatorId == AppState.account.id);
+              return AppState.keeps.filter(k => k.creatorId == AppState.account.id);
             }),
+            // keepCount: computed(() => myKeeps,length),
         };
     },
     components: { KeepComponent }
