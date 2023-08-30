@@ -60,7 +60,7 @@ public class VaultKeepsController : ControllerBase
       try 
       {
       Account userInfo = await _auth0.GetUserInfoAsync<Account>(HttpContext);
-      List<VaultKeep> vaultkeeps = _vaultKeepsService.GetVaultKeeps(userInfo.Id);
+      List<VaultKeep> vaultkeeps = _vaultKeepsService.GetVaultKeeps(userInfo?.Id);
       return Ok(vaultkeeps);
       }
       catch (Exception e)

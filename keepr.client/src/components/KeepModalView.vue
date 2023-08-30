@@ -45,7 +45,7 @@
             </ul>
           </div> -->
 
-          <div class="dropdown">
+          <div v-if="account.id" class="dropdown">
             <button class="btn save-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Save to Vault
             </button>
