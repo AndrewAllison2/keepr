@@ -11,8 +11,8 @@
     CREATE
   </button>
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item text-white top-option" data-bs-toggle="modal" data-bs-target="#createKeepModal">new keep</a></li>
-    <li><a class="dropdown-item text-white" data-bs-toggle="modal" data-bs-target="#createVaultModal">new vault</a></li>
+    <li><a class="dropdown-item top-option" data-bs-toggle="modal" data-bs-target="#createKeepModal">new keep</a></li>
+    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#createVaultModal">new vault</a></li>
   </ul>
 </div>
 
@@ -69,9 +69,24 @@ a:hover {
   border-bottom-right-radius: 0;
 }
 
+.dropdown-toggle{
+    background-color: #A277D940;
+  color: black;
+  text-shadow: 1px 1px white;
+  
+}
 .dropdown-menu{
   background-color: #877A8F;
   border: 1px solid black;
+  color: black;
+  
+}
+
+.dropdown-item{
+  background-color: #A277D940;
+  color: black;
+  text-shadow: 1px 1px white;
+  
 }
 
 .top-option{

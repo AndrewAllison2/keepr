@@ -51,14 +51,4 @@ export default {
 
 <style lang="scss" scoped>
 
-
-@media screen and (max-width: 769px){
-  .account-photo{
-    
-    aspect-ratio: 1;
-    
-  }
-
-}
-
 </style>

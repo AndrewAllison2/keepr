@@ -123,7 +123,7 @@ export default {
 <style lang="scss" scoped>
 .vault-img{
   
-  width: 45vw;
+  width: 40vw;
   aspect-ratio: 1/1;
 }
 
