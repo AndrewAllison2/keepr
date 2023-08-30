@@ -126,4 +126,6 @@ export default {
   color: black;
   text-shadow: 1px 1px white;
 }
+
+
 </style>
