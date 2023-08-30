@@ -33,7 +33,7 @@
           <!-- NOTE THIS IS FOR THE Vaults LATER -->
 
 
-          <div class="col-12 d-flex justify-content-around align-items-center">
+          <div class="col-12 d-block d-md-flex justify-content-around align-items-center">
 
           
             <div v-if="vault?.creatorId == account?.id">
@@ -41,7 +41,7 @@
                 <button class="btn drop-down" @click="removeVaultKeep(keep)">Remove from Vault</button>
               </div>
               
-            <div v-if="keep" class="d-flex align-items-center">
+            <div v-if="keep" class="d-flex align-items-center keep-creator">
               <router-link :to="{name: 'Profile', params: {profileId: keep?.creatorId}}">
                 <img class="img-fluid avatar me-2" :src="keep?.creator?.picture" :alt="keep?.creator?.name" title="View Profile" data-bs-toggle="modal" data-bs-target="keepModal">
               </router-link>
@@ -65,6 +65,7 @@ import { AppState } from "../AppState.js";
 import Pop from "../utils/Pop.js";
 import { vaultKeepsService } from "../services/VaultKeepsService.js";
 import { Modal } from "bootstrap";
+import { logger } from "../utils/Logger.js";
 
 
 export default {
@@ -81,7 +82,10 @@ export default {
           if (!await Pop.confirm('Are you sure you want to remove this keep from your vault?')) {
             return
           }
+          logger.log('Keep to remove grabbed from method', keep)
           const vaultKeep = AppState.vaultKeeps.find(vk => vk.keepId == keep.id && vk.vaultId == AppState.activeVault.id)
+          logger.log('VK id found from the keep we grabbed', vaultKeep)
+          logger.log(AppState.vaultKeeps)
           await vaultKeepsService.removeVaultKeep(vaultKeep.id)
           Modal.getOrCreateInstance('#vaultKeepsView').hide()
         }
@@ -127,5 +131,26 @@ export default {
   text-shadow: 1px 1px white;
 }
 
+@media screen and (max-width: 769px){
+    .keep-img{
+    width: 100vw;
+    object-fit:fill;
+    object-position: center;
+  }
 
+  .avatar {
+  height: 5vh;
+  width: 5vh;
+  border-radius: 50%;
+}
+
+.keep-creator{
+  margin-top: 1em;
+  padding-left: 4em;
+}
+
+.drop-down{
+  margin-left: 5.7em;
+}
+}
 </style>
