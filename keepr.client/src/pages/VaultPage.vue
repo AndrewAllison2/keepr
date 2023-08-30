@@ -89,8 +89,8 @@ export default {
         
     onMounted(() => {
       getVaultKeeps();
-            getVaultById();
-          getKeepsByVaultId();
+      getVaultById();
+      getKeepsByVaultId();
           
           
         });
