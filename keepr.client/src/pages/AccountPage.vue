@@ -17,26 +17,59 @@
           <!-- <p class="mt-4">{{ account.email }}</p> -->
         </div>
 
-        <h5 class="text-center"> Vaults |  Keeps</h5>
+        <h5 class="text-center mt-4"> {{vaultCount}} Vaults |  Keeps</h5>
       </div>
     
-      <div class="text-center mt-5">
+      <div class="text-center mt-2">
         <button class="btn save-btn" data-bs-toggle="modal" data-bs-target="#editAccount">Edit Account</button>
       </div>
+
+      <div class="row">
+      <h4>VAULTS</h4>
+      <div v-for="v in vaults" :key="v.id" class="col-12 col-md-3">
+        <router-link :to="{name: 'Vault', params:{vaultId: v?.id}}">
+          <VaultCard :vaultProp="v"/>
+        </router-link>
+      </div>
+    </div>
     
     </div>
   
 </template>
 
 <script>
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import { AppState } from '../AppState';
+import Pop from "../utils/Pop.js";
+import { vaultsService } from "../services/VaultsService.js";
 export default {
   setup() {
+
+    async function getAccountVaults() {
+      try 
+      {
+        
+        await vaultsService.getAccountVaults()
+      }
+      catch (error)
+      {
+        return Pop.error(error.message)
+      }
+    }
+
+    async function getAccountKeeps() {
+      
+    }
+
+    onMounted(() => {
+      getAccountVaults()
+    })
+
     return {
       account: computed(() => AppState.account),
       keepCount: computed(() => AppState.profileKeeps.length),
-      vaultCount: computed(()=> AppState.vaults.length)
+      vaultCount: computed(() => AppState.accountVaults.length),
+      vaults: computed(()=> AppState.accountVaults)
     }
   }
 }
