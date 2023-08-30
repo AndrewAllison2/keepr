@@ -14,7 +14,7 @@
         </div>
       </div>
 
-      <div class="text-center">
+      <div class="text-center mt-3">
         <h5>{{ keptKeeps.length }} Keeps</h5>
       </div>
 
