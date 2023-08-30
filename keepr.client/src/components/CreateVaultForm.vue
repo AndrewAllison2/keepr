@@ -40,6 +40,7 @@
 <script>
 import { ref } from "vue";
 import { vaultsService } from "../services/VaultsService.js";
+import Pop from "../utils/Pop.js";
 
 export default {
   setup() {
@@ -49,11 +50,20 @@ export default {
       editable,
 
       async createVault() {
-        const formData = editable.value
+        try 
+        {
+          const formData = editable.value
         if (formData.isPrivate == null) {
           formData.isPrivate = false
         }
         await vaultsService.createVault(formData)
+          Pop.toast(`${formData.name} has been created!`)
+        
+        }
+        catch (error)
+        {
+          return Pop.error(error.message)
+        }
       }
     }
   }

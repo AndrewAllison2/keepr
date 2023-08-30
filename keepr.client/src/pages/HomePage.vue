@@ -52,6 +52,7 @@ export default {
             if (AppState.account.id) {
                 getMyVaults()
             }
+            AppState.vaults
         });
         
         return {
