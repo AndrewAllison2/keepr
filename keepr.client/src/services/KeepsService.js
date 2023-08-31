@@ -18,6 +18,11 @@ class KeepsService {
     AppState.activeKeep = new Keep(res.data)
   }
 
+  setActiveVaultKeep(vaultKeepId) {
+    const foundKeep = AppState.keptKeeps.find(k => k.vaultKeepId == vaultKeepId)
+    AppState.activeKeep = new Keep(foundKeep)
+  }
+
   async getProfileKeeps(profileId) {
     const res = await api.get(`api/profiles/${profileId}/keeps`)
     // logger.log('profile keeps', res.data)
@@ -39,7 +44,7 @@ class KeepsService {
 
   async getKeepsByVaultId(vaultId) {
     const res = await api.get(`api/vaults/${vaultId}/keeps`)
-    // logger.log('getting vault keeps', res.data)
+    logger.log('getting vault keeps', res.data)
     AppState.keptKeeps = res.data.map(v => new Keep(v))
   }
 

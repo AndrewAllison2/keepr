@@ -13,7 +13,7 @@
       <div class="row">
         <div class="col-8 m-auto text-center mt-3">
           <h1 class="mt-3"> {{ account.name }}</h1>
-          <img class="mt-3 avatar" :src="account.picture" :alt="account.name" />
+          <img class="mt-3 avatar" :src="account.picture" alt="Profile Picture" />
           <!-- <p class="mt-4">{{ account.email }}</p> -->
         </div>
 

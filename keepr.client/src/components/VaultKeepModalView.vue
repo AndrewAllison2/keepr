@@ -82,11 +82,12 @@ export default {
           if (!await Pop.confirm('Are you sure you want to remove this keep from your vault?')) {
             return
           }
+          // const foundKeep = AppState.keptKeeps.find(k => k.id == keep.id)
           logger.log('Keep to remove grabbed from method', keep)
-          const vaultKeep = AppState.vaultKeeps.find(vk => vk.keepId == keep.id && vk.vaultId == AppState.activeVault.id)
-          logger.log('VK id found from the keep we grabbed', vaultKeep)
+          // const vaultKeep = AppState.vaultKeeps.find(vk => vk.id == AppState.keptKeeps.vaultKeepId && vk.vaultId == AppState.activeVault.id)
+          // logger.log('VK id found from the keep we grabbed', vaultKeep)
           logger.log(AppState.vaultKeeps)
-          await vaultKeepsService.removeVaultKeep(vaultKeep.id)
+          await vaultKeepsService.removeVaultKeep(keep.vaultKeepId)
           Modal.getOrCreateInstance('#vaultKeepsView').hide()
         }
         catch (error)

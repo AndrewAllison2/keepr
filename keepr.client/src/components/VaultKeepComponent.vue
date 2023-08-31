@@ -2,7 +2,7 @@
   
 
     <div class="cards">
-      <img class="img-fluid keep-img selectable" title="View this keep" data-bs-toggle="modal" data-bs-target="#vaultKeepsView" @click="setActiveKeep()" :src="keepProp.img" :alt="keepProp.name">
+      <img class="img-fluid keep-img selectable" title="View this keep" data-bs-toggle="modal" data-bs-target="#vaultKeepsView" @click="setActiveVaultKeep()" :src="keepProp.img" :alt="keepProp.name">
     </div>
     
     <div class="keep-info d-flex justify-content-around align-items-center">
@@ -37,10 +37,12 @@ export default {
       account: computed(()=> AppState.account),
 
 
-      async setActiveKeep() {
+      async setActiveVaultKeep() {
         // debugger
-        keepsService.setActiveKeep(props.keepProp.id)
+        keepsService.setActiveVaultKeep(props.keepProp.vaultKeepId)
       },
+
+      
 
       async removeKeep(keep) {
         try 
