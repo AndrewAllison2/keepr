@@ -41,6 +41,7 @@
 import { ref } from "vue";
 import { vaultsService } from "../services/VaultsService.js";
 import Pop from "../utils/Pop.js";
+import { accountService } from "../services/AccountService.js";
 
 export default {
   setup() {
@@ -58,7 +59,7 @@ export default {
         }
         await vaultsService.createVault(formData)
           Pop.toast(`${formData.name} has been created!`)
-        
+          accountService.getMyVaults()
         }
         catch (error)
         {
