@@ -90,6 +90,7 @@ div{
   border-radius: 50%;
   object-fit: cover;
   aspect-ratio: 1;
+  margin-right: 3px;
 }
 
 .keep-name{
