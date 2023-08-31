@@ -3,17 +3,17 @@
   <form action="" @submit.prevent="createVault()">
 
     <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="vaultName" placeholder="Title..." v-model="editable.name">
+      <input type="text" class="form-control" id="vaultName" required minlength="3" maxlength="75" placeholder="Title..." v-model="editable.name">
       <label for="vaultName">Title...</label>
     </div>
 
     <div class="form-floating mb-3">
-      <input type="url" class="form-control" id="vaultImg" placeholder="Title..." v-model="editable.img">
+      <input type="url" class="form-control" id="vaultImg" placeholder="Title..." required minlength="3" maxlength="200" v-model="editable.img">
       <label for="vaultImg">Image URL...</label>
     </div>
 
     <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="vaultDescription" placeholder="Title..." v-model="editable.Description">
+      <input type="text" class="form-control" id="vaultDescription" placeholder="Title..." required minlength="3" maxlength="200" v-model="editable.Description">
       <label for="vaultDescription">Description...</label>
     </div>
 
@@ -29,7 +29,7 @@
     </div>
 
     <div class="mb-3 text-end">
-      <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Create</button>
+      <button type="submit" class="btn save-btn" data-bs-dismiss="modal">Create</button>
     </div>
 
   </form>
@@ -73,5 +73,10 @@ export default {
 
 
 <style lang="scss" scoped>
-
+.save-btn {
+  background-color: #A277D940;
+  color: black;
+  width: 8.5em;
+  text-shadow: 1px 1px white;
+}
 </style>
