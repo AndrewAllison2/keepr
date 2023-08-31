@@ -3,17 +3,17 @@
   <form @submit.prevent="editAccount()">
     <div class="mb-2">
         <label for="name">Name</label>
-        <input class="form-control" type="text" id="name" minlength="3" maxlength="75" v-model="editable.name">
+        <input class="form-control" type="text" id="name" required minlength="3" maxlength="75" v-model="editable.name">
       </div>
       
       <div class="mb-2">
         <label for="picture">Picture</label>
-        <input class="form-control" type="url" id="picture" minlength="3" maxlength="200" v-model="editable.picture">
+        <input class="form-control" type="url" id="picture" required minlength="3" maxlength="200" v-model="editable.picture">
       </div>
 
       <div class="mb-2">
         <label for="coverImg">Cover Image</label>
-        <input class="form-control" type="url" id="coverImg" minlength="3" maxlength="200" v-model="editable.coverImg">
+        <input class="form-control" type="url" id="coverImg" required minlength="3" maxlength="200" v-model="editable.coverImg">
       </div>
 
       <div class="mt-3 d-flex justify-content-around">
@@ -43,7 +43,7 @@ export default {
           const formData = editable.value
           await accountService.editAccount(formData)
           Modal.getOrCreateInstance('#editAccount').hide()
-          editable.value = {}
+          // editable.value = {}
         }
         catch (error)
         {

@@ -37,7 +37,7 @@ public class AccountController : ControllerBase
     try 
     {
       Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
-      List<Vault> vaults = _vaultsService.GetMyVaults(userInfo.Id);
+      List<Vault> vaults = _vaultsService.GetMyVaults(userInfo?.Id);
       return Ok(vaults);
     }
     catch (Exception e)
@@ -54,7 +54,7 @@ public class AccountController : ControllerBase
     {
       Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
       
-      Profile account = _accountService.Edit(editData, userInfo.Email);
+      Profile account = _accountService.Edit(editData, userInfo?.Email);
       return Ok(account);
     }
     catch (Exception e)
