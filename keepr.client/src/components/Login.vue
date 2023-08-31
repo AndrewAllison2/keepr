@@ -51,4 +51,8 @@ export default {
 
 <style lang="scss" scoped>
 
+.account-photo{
+  object-fit: cover;
+  aspect-ratio: 1/1;
+}
 </style>

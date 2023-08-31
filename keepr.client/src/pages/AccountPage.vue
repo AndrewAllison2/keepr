@@ -13,11 +13,11 @@
       <div class="row">
         <div class="col-8 m-auto text-center mt-3">
           <h1 class="mt-3"> {{ account.name }}</h1>
-          <img class="mt-3 avatar" :src="account.picture" alt="" />
+          <img class="mt-3 avatar" :src="account.picture" :alt="account.name" />
           <!-- <p class="mt-4">{{ account.email }}</p> -->
         </div>
 
-        <h5 class="text-center mt-4"> {{vaultCount}} Vaults | {{ keepCount }} Keeps</h5>
+        <h2 class="text-center mt-4 fs-5"> {{vaultCount}} Vaults | {{ keepCount }} Keeps</h2>
       </div>
     
       <div class="text-center mt-2">
@@ -25,7 +25,7 @@
       </div>
 
       <div class="row">
-      <h4>VAULTS</h4>
+      <h3 class="fs-4">VAULTS</h3>
       <div v-for="v in vaults" :key="v.id" class="col-12 col-md-3">
         <router-link :to="{name: 'Vault', params:{vaultId: v?.id}}">
           <VaultCard :vaultProp="v"/>
@@ -138,7 +138,8 @@ body{
 .avatar{
   border-radius: 100%;
   height: 10em;
-  width: 10em;
+  aspect-ratio: 1;
+  object-fit: cover;
 }
 
 

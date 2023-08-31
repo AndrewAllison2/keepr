@@ -113,6 +113,7 @@ export default {
   border-radius: 100%;
   // height: 10em;
   aspect-ratio: 1;
+  object-fit: cover;
   width: 10em;
 }
 

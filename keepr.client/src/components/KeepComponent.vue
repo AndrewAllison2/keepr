@@ -88,6 +88,7 @@ div{
   // height: 2.5em;
   width: 2.5em;
   border-radius: 50%;
+  object-fit: cover;
   aspect-ratio: 1;
 }
 
