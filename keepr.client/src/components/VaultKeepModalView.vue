@@ -7,7 +7,7 @@
         <img class="img-fluid rounded keep-img" :src="keep?.img" :alt="keep?.name">
       </div>
 
-      <div class="col-12 col-md-6 keep-info p-3">
+      <div class="col-12 col-md-6 keep-info p-3 highest-div">
 
         <div class="d-flex justify-content-center top-div">
           <i class="mdi mdi-eye me-2" title="Views"></i>
@@ -132,12 +132,23 @@ export default {
   text-shadow: 1px 1px white;
 }
 
-.top-div{
-  height: 23%;
-}
+.highest-div{
+  flex-direction: column;
+  
+  
+  .top-div{
+    height: 20%;
+  }
+  
+  .middle-div{
+    height: 11em;
+  }
+  
+  .keep-info{
+    height: 20%;
+  }
 
-.middle-div{
-  height: 18em;
+
 }
 
 .keep-desc{
@@ -168,12 +179,20 @@ export default {
   margin-left: 5.2em;
 }
 
-.top-div{
-  height: auto;
-}
 
-.middle-div{
-  height: auto;
+.highest-div{
+  .top-div{
+    height: auto;
+  }
+  
+  .middle-div{
+    height: auto;
+  }
+  
+  .keep-info{
+    height: auto;
+  }
+  
 }
 }
 </style>

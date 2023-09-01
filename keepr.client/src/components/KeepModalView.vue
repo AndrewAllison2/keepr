@@ -1,12 +1,12 @@
 <template>
   <div class="container-fluid">
-    <div class="row highest-div">
+    <div class="row ">
 
       <div class="col-12 col-md-6 p-0">
         <img class="img-fluid rounded keep-img" :src="keep?.img" :alt="keep?.name">
       </div>
 
-      <div class="col-12 col-md-6 p-3">
+      <div class="col-12 col-md-6 p-3 highest-div">
 
         <div class="d-flex justify-content-center top-div">
           <i class="mdi mdi-eye me-2" title="Views"></i>
@@ -141,13 +141,26 @@ export default {
   object-position: center;
 }
 
-.top-div{
-  height: 27%;
+.highest-div{
+  flex-direction: column;
+  
+  
+  .top-div{
+    height: 25%;
+  }
+  
+  .middle-div{
+    height: 11em;
+  }
+  
+  .keep-info{
+    height: 20%;
+  }
+
+
 }
 
-.middle-div{
-  height: 18em;
-}
+
 
 
 
@@ -172,7 +185,7 @@ export default {
 
 .delete-btn{
   position: relative;
-  top: -10em;
+  top: -7.5em;
 }
 
 .keep-desc{
@@ -211,16 +224,20 @@ export default {
   top: -2em;
 }
 
-.top-div{
-  height: auto;
-}
 
-.middle-div{
-  height: auto;
-}
-
-.keep-info{
-  height: auto;
+.highest-div{
+  .top-div{
+    height: auto;
+  }
+  
+  .middle-div{
+    height: auto;
+  }
+  
+  .keep-info{
+    height: auto;
+  }
+  
 }
 
 
