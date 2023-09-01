@@ -1,7 +1,7 @@
 <template>
 
   <div class="modal fade" id="keepModal" tabindex="-1" aria-labelledby="keepModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
+  <div class="modal-dialog modal-xl modal-component">
     <div class="modal-content">
       
       <slot name="body"></slot>
@@ -28,5 +28,7 @@ export default {
 
 
 <style lang="scss" scoped>
-
+.modal-component{
+  height: 80vh;
+}
 </style>

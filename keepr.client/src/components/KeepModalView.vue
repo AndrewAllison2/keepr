@@ -22,8 +22,8 @@
         <div class="row mt-5 pt-5 text-center middle-div">
           <h1 class="fw-1">{{ keep?.name }}</h1>
           <p>{{ keep?.description }}</p>
-
-          <div class="col-10 m-auto mt-2">
+          
+          <div class="col-10 m-auto mt-0">
           </div>
         </div>
 
@@ -141,15 +141,16 @@ export default {
 }
 
 .top-div{
-  height: 22%;
+  height: 20%;
 }
 
 .middle-div{
-  height: 42%;
+  height: 47%;
 }
 
 .keep-info{
   height: 15%;
+  justify-self: baseline;
 }
 
 .save-btn {
@@ -160,8 +161,8 @@ export default {
 }
 
 .avatar {
-  height: 10vh;
-  width: 10vh;
+  height: 7vh;
+  width: 7vh;
   border-radius: 50%;
 }
 
@@ -173,7 +174,7 @@ export default {
 
 .delete-btn{
   position: relative;
-  top: -8em;
+  top: -7.5em;
 }
 
 @media screen and (max-width: 769px) {
