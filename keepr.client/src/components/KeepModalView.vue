@@ -1,29 +1,29 @@
 <template>
   <div class="container-fluid">
-    <div class="row">
+    <div class="row highest-div">
 
       <div class="col-12 col-md-6 p-0">
         <img class="img-fluid rounded keep-img" :src="keep?.img" :alt="keep?.name">
       </div>
 
-      <div class="col-12 col-md-6 keep-info p-3">
+      <div class="col-12 col-md-6 p-3">
 
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center top-div">
           <i class="mdi mdi-eye me-2" title="Views"></i>
           <h1 class="fs-5 me-4">{{ keep?.views }}</h1>
           <i class="mdi mdi-file me-2" title="Kept"></i>
           <h1 class="fs-5">{{ keep?.kept }}</h1>
         </div>
+        <div v-if="keep?.creatorId == account?.id" class="text-end">
+          <i class="mdi mdi-close-circle text-danger selectable fs-5 delete-btn" title="Remove this keep" @click="removeKeep(this.keep)"></i>
+        </div>
 
-              <div v-if="keep?.creatorId == account?.id" class="text-end">
-                <i class="mdi mdi-close-circle text-danger selectable fs-5" title="Remove this keep" @click="removeKeep(this.keep)"></i>
-              </div>
 
-        <div class="row mt-5 pt-5 text-center">
+        <div class="row mt-5 pt-5 text-center middle-div">
           <h1 class="fw-1">{{ keep?.name }}</h1>
+          <p>{{ keep?.description }}</p>
 
-          <div class="col-10 m-auto mt-3">
-            <p>{{ keep?.description }}</p>
+          <div class="col-10 m-auto mt-2">
           </div>
         </div>
 
@@ -32,19 +32,7 @@
           <!-- NOTE THIS IS FOR THE Vaults LATER -->
 
 
-          <div class="col-12 d-block d-md-flex justify-content-around align-items-center keep-info">
-
-          <!-- <div class="btn-group">
-            <button type="button" :disabled='!selectedVault' class="btn save-btn" @click="createVaultKeep()">save</button>
-            <button type="button" class="btn drop-down dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-              <span class="visually-hidden">Toggle Dropdown</span>
-            </button>
-            <ul class="dropdown-menu">
-              <li v-for="vault in myVaults" :key="vault?.id" :value="vault.id" @click="selectedVault=`${vault.id}`" class="dropdown-item">{{vault?.name}}</li>
-              
-            </ul>
-          </div> -->
-
+          <div class="col-12 d-block d-md-flex justify-content-around align-items-center keep-info bottom-div">
           <div v-if="account.id" class="dropdown">
             <button class="btn save-btn dropdown-toggle" :hidden="hasVaults == false" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Save to Vault
@@ -152,7 +140,17 @@ export default {
   object-position: center;
 }
 
+.top-div{
+  height: 22%;
+}
 
+.middle-div{
+  height: 42%;
+}
+
+.keep-info{
+  height: 15%;
+}
 
 .save-btn {
   background-color: #A277D940;
@@ -171,6 +169,11 @@ export default {
   background-color: #A277D940;
   color: black;
   text-shadow: 1px 1px white;
+}
+
+.delete-btn{
+  position: relative;
+  top: -8em;
 }
 
 @media screen and (max-width: 769px) {
@@ -198,6 +201,25 @@ export default {
 .creator{
   padding-left: 4em;
 }
+
+.delete-btn{
+  position: relative;
+  top: -2em;
+}
+
+.top-div{
+  height: auto;
+}
+
+.middle-div{
+  height: auto;
+}
+
+.keep-info{
+  height: auto;
+}
+
+
 }
 
 
