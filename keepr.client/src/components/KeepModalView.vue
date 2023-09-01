@@ -19,11 +19,12 @@
         </div>
 
 
-        <div class="row mt-5 pt-5 text-center middle-div">
+        <div class="row mt-3 pt-5 text-center">
+          <div class="col-10 m-auto mt-0 middle-div">
+        
           <h1 class="fw-1">{{ keep?.name }}</h1>
-          <p>{{ keep?.description }}</p>
+          <p class="keep-desc">{{ keep?.description }}</p>
           
-          <div class="col-10 m-auto mt-0">
           </div>
         </div>
 
@@ -141,17 +142,14 @@ export default {
 }
 
 .top-div{
-  height: 20%;
+  height: 27%;
 }
 
 .middle-div{
-  height: 47%;
+  height: 18em;
 }
 
-.keep-info{
-  height: 15%;
-  justify-self: baseline;
-}
+
 
 .save-btn {
   background-color: #A277D940;
@@ -174,7 +172,12 @@ export default {
 
 .delete-btn{
   position: relative;
-  top: -7.5em;
+  top: -10em;
+}
+
+.keep-desc{
+  text-overflow: clip;
+  word-wrap: break-word;
 }
 
 @media screen and (max-width: 769px) {
@@ -200,7 +203,7 @@ export default {
 }
 
 .creator{
-  padding-left: 4em;
+  padding-left: 4.5em;
 }
 
 .delete-btn{

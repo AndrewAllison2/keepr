@@ -9,7 +9,7 @@
 
       <div class="col-12 col-md-6 keep-info p-3">
 
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center top-div">
           <i class="mdi mdi-eye me-2" title="Views"></i>
           <h1 class="fs-5 me-4">{{ keep?.views }}</h1>
           <i class="mdi mdi-file me-2" title="Kept"></i>
@@ -21,10 +21,10 @@
               </div> -->
 
         <div class="row mt-5 pt-5 text-center">
-          <h1 class="fw-1">{{ keep?.name }}</h1>
-
-          <div class="col-10 m-auto mt-3">
-            <p>{{ keep?.description }}</p>
+          
+          <div class="col-10 m-auto mt-3 middle-div">
+            <h1 class="fw-1">{{ keep?.name }}</h1>
+            <p class="keep-desc">{{ keep?.description }}</p>
           </div>
         </div>
 
@@ -33,7 +33,7 @@
           <!-- NOTE THIS IS FOR THE Vaults LATER -->
 
 
-          <div class="col-12 d-block d-md-flex justify-content-around align-items-center">
+          <div class="col-12 d-block d-md-flex justify-content-around align-items-center bottom-div">
 
           
             <div v-if="vault?.creatorId == account?.id">
@@ -121,8 +121,8 @@ export default {
 }
 
 .avatar {
-  height: 10vh;
-  width: 10vh;
+  height: 7vh;
+  width: 7vh;
   border-radius: 50%;
 }
 
@@ -130,6 +130,19 @@ export default {
   background-color: #A277D940;
   color: black;
   text-shadow: 1px 1px white;
+}
+
+.top-div{
+  height: 23%;
+}
+
+.middle-div{
+  height: 18em;
+}
+
+.keep-desc{
+  text-overflow: clip;
+  word-wrap: break-word;
 }
 
 @media screen and (max-width: 769px){
@@ -143,15 +156,24 @@ export default {
   height: 5vh;
   width: 5vh;
   border-radius: 50%;
+  ;
 }
 
 .keep-creator{
   margin-top: 1em;
-  padding-left: 3.5em;
+  padding-left: 5.5em;
 }
 
 .drop-down{
   margin-left: 5.2em;
+}
+
+.top-div{
+  height: auto;
+}
+
+.middle-div{
+  height: auto;
 }
 }
 </style>
