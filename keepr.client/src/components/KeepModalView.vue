@@ -175,6 +175,7 @@ export default {
   height: 7vh;
   width: 7vh;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .drop-down{
@@ -204,6 +205,7 @@ export default {
   height: 5vh;
   width: 5vh;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .keep-info {
@@ -217,6 +219,7 @@ export default {
 
 .creator{
   padding-left: 4.5em;
+  object-fit: cover;
 }
 
 .delete-btn{

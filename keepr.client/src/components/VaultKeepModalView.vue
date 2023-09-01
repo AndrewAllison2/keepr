@@ -124,6 +124,7 @@ export default {
   height: 7vh;
   width: 7vh;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .drop-down{
@@ -167,12 +168,14 @@ export default {
   height: 5vh;
   width: 5vh;
   border-radius: 50%;
+  object-fit: cover
   ;
 }
 
 .keep-creator{
   margin-top: 1em;
   padding-left: 5.5em;
+  object-fit: cover;
 }
 
 .drop-down{

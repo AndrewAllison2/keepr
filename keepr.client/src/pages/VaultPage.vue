@@ -125,6 +125,7 @@ export default {
   
   width: 40vw;
   aspect-ratio: 1/1;
+  object-fit: cover;
 }
 
 .vault-info{

@@ -92,6 +92,7 @@ div{
   width: 3em;
   border-radius: 50%;
   aspect-ratio: 1/1;
+  object-fit: cover;
 }
 
 .keep-name{
